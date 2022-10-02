@@ -50,9 +50,22 @@ section > ul {
     color: var(--paragraph-color);
 }
 
-.event-image {
-    margin: 30px 0;
+.slider {
     width: 90%;
+    display: grid;
+    grid-auto-flow: column;
+    scroll-behavior: auto;
+    gap: 1.2rem;
+    overflow-y: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin: 20px 0;
+    border-radius: var(--image-border-radius);
+}
+
+.slider-image {
+    width: 700px;
     border-radius: var(--image-border-radius);
     box-shadow: 0 10px 10px var(--shadow-color);
 }
@@ -108,9 +121,41 @@ aside > hr {
     content: " horas";
 }
 
+@media screen and (min-width:1024px) and (max-width:1439px) {
+
+    .event-content {
+        justify-content: space-around;
+    }
+
+    section {
+        width: 60%;
+    }
+}
+
 @media screen and (min-width:767px) and (max-width:1023px) {
     main {
         width: 90%;
+    }
+
+    .event-content {
+        flex-direction: column;
+    }
+
+    section {
+        width: 100%;
+    }
+
+    .event-info {
+        width: 100%;
+    }
+
+    .slider {
+        width: 100%;
+    }
+
+    .redirect-confirm-page {
+        width: 100%;
+        margin-bottom: 40px;
     }
 }
 
@@ -131,7 +176,7 @@ aside > hr {
         width: 100%;
     }
 
-    .event-image {
+    .slider {
         width: 100%;
     }
 

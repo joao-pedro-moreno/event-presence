@@ -1,0 +1,28 @@
+main {
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 20px auto;
+    background-color: var(--main-background-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.content-subtitle {
+    text-align: center;
+    color: var(--main-color);
+    font-size: var(--title-size);
+}
+
+.about-title {
+    color: var(--main-color);
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.paragraph {
+    color: var(--paragraph-color);
+    text-indent: var(--paragraph-text-indent);
+}
