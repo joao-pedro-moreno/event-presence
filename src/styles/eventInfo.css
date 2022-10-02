@@ -1,0 +1,109 @@
+main {
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px auto;
+    background-color: var(--main-background-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+}
+
+.event-banner {
+    width: 100%;
+    border-radius: var(--image-border-radius);
+    box-shadow: 0 10px 10px var(--shadow-color);
+    margin-bottom: 30px;
+}
+
+.event-content {
+    width: 100%;
+    display: flex;
+}
+
+section {
+    width: 80%;
+}
+
+.event-name {
+    color: var(--main-color);
+    font-size: var(--title-size);
+    margin-bottom: 30px;
+}
+
+.event-info-title {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: var(--title-color);
+    font-weight: var(--second-title-weight);
+}
+
+.event-info {
+    text-indent: var(--paragraph-text-indent);
+    color: var(--paragraph-color);
+    width: 90%;
+}
+
+section > ul {
+    margin: 0 20px;
+    color: var(--paragraph-color);
+}
+
+.event-image {
+    margin: 30px 0;
+    width: 90%;
+    border-radius: var(--image-border-radius);
+    box-shadow: 0 10px 10px var(--shadow-color);
+}
+
+.redirect-confirm-page {
+    display: block;
+    width: 90%;
+    margin-top: 10px;
+    padding: 16px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--button-text-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+    box-shadow: 0 10px 10px -12px var(--green-shadow-color);
+    transition: all 0.3s ease;
+}
+
+.redirect-confirm-page:hover {
+    background-color: var(--main-color-hover);
+}
+
+aside {
+    max-height: 650px;
+    background-color: var(--input-background-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 10px var(--shadow-color);
+}
+
+aside > hr {
+    opacity: 0.2;
+}
+
+.event-aside-title {
+    color: var(--main-color);
+}
+
+.event-aside-info {
+    color: var(--paragraph-color);
+}
+
+.event-aside-ticket::before {
+    content: "R$ ";
+}
+
+.event-aside-hour::after {
+    content: " horas";
+}

@@ -1,0 +1,103 @@
+main {
+    max-width: 1400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    background-color: var(--main-background-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.content-subtitle {
+    text-align: center;
+    color: var(--main-color);
+    font-size: var(--title-size);
+}
+
+article {
+    max-width: 400px;
+    min-height: 500px;
+    background-color: var(--input-background-color);
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: var(--border-radius);
+}
+
+.card-image {
+    width: 100%;
+    border-radius: var(--image-border-radius);
+    box-shadow: 0 10px 10px var(--shadow-color);
+}
+
+.card-name {
+    color: var(--main-color);
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.card-desc {
+    color: var(--paragraph-color);
+    text-indent: var(--paragraph-text-indent);
+    margin-bottom: 10px;
+}
+
+.card-date, .card-hour {
+    color: var(--paragraph-color);
+}
+
+.card-date::before {
+    content: "Data: ";
+    color: var(--main-color);
+}
+
+.card-hour::before {
+    content: "Início: ";
+    color: var(--main-color);
+}
+
+.card-hour::after {
+    content: " horas";
+}
+
+.card-info-button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 16px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--button-text-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+    box-shadow: 0 10px 10px -12px var(--green-shadow-color);
+    transition: all 0.3s ease;
+}
+
+.card-info-button:hover {
+    background-color: var(--main-color-hover);
+}
+
+@media screen and (min-width:1024px) and (max-width:1500px) {
+    main {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width:767px) and (max-width:1023px) {
+    main {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:767px) {
+    main {
+        width: 90%;
+    }
+}

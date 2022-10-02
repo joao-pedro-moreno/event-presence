@@ -1,0 +1,101 @@
+form {
+    width: 400px;
+    padding: 30px;
+    background-color: var(--form-background-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 10px var(--shadow-color);
+}
+
+fieldset {
+    border: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+
+legend {
+    color: var(--main-color);
+    font-weight: 800;
+    font-size: 30px;
+    margin: 0;
+}
+
+.connect-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: var(--input-background-color);
+    color: var(--paragraph-color);
+    box-shadow: 0 10px 10px var(--shadow-color);
+}
+
+.connect-input::placeholder {
+    color: var(--placeholder-color);
+}
+
+label {
+    color: var(--paragraph-color);
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 16px 0;
+    margin: 25px 0;
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--button-text-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+    box-shadow: 0 10px 10px -12px var(--green-shadow-color);
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: var(--main-color-hover);
+}
+
+.form-redirect {
+    color: var(--paragraph-color);
+}
+
+.form-redirect-link, .form-redirect-link:visited {
+    color: var(--main-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.form-redirect-link:hover {
+    color: var(--main-color-hover);
+}
+
+@media screen and (min-width:767px) and (max-width:1023px) {
+    form {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .main-image {
+        display: none;
+    }
+
+    .content-subtitle {
+        text-align: center;
+        margin-top: 80px;
+    }
+
+    form {
+        width: 90%;
+        margin-bottom: 50px;
+    }
+}

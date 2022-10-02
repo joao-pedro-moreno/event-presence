@@ -4,14 +4,15 @@
 /* Declaração de todas as variáveis globais */
 :root {
     --body-background-color: #201b2c;
-    --main-background-color: #2b134b;
+    --main-background-color: #2f2841;
     --main-color: #00ff88;
     --main-color-hover: #77ff88;
-    --background-input-color: #514869;
+    --input-background-color: #514869;
     --placeholder-color: #f0ffff94;
     --shadow-color: #00000020;
     --green-shadow-color: #00ff8850;
     --button-text-color: #2b134b;
+    --form-background-color: #2f2841;
 
     --title-weight: 200;
     --title-size: 2rem;

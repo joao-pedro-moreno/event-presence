@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Importação de estilos -->
+    <link rel="stylesheet" href="../../styles/config.css">
+    <link rel="stylesheet" href="../../styles/defaultPage.css">
+    <link rel="stylesheet" href="../../styles/components/header.css">
+    <link rel="stylesheet" href="../../styles/components/connectForm.css">
+
+    <title>Criar conta</title>
+</head>
+<body>
+    <header>
+        <h1 class="header-title">Event Presence</h1>
+
+        <nav>
+            <a href="../eventFeedPage.html" class="header-links">Eventos</a>
+            <a href="#" class="header-links">Sobre</a>
+            <a href="#" class="header-links">Contato</a>
+            <a href="./loginPage.html" id="connect-redirect">Já possui uma conta?</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2 class="content-subtitle">Crie sua conta para administrar seus eventos</h2>
+
+            <img src="../../assets/disco-ball-animate.svg" alt="" class="main-image">
+        </section>
+
+        <form action="">
+            <fieldset>
+                <legend>Criar conta</legend>
+
+                <label for="register-user">Usuário</label>
+                <input type="text" name="register-user" id="register-user" class="connect-input">
+
+                <label for="register-email">Email</label>
+                <input type="email" name="register-email" id="register-email" class="connect-input">
+
+                <label for="register-password">Senha</label>
+                <input type="password" name="register-password" id="register-password" class="connect-input">
+
+                <label for="register-confirm-password">Confirmar Senha</label>
+                <input type="password" name="register-confirm-password" id="register-confirm-password" class="connect-input">
+
+                <input type="submit" value="Criar conta" class="submit-button">
+
+                <span class="form-redirect">Já possui uma conta? <a href="./loginPage.html" class="form-redirect-link">Faça login</a></span>
+            </fieldset>
+        </form>
+    </main>
+</body>
+</html>
