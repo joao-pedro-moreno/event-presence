@@ -12,8 +12,10 @@ main {
 
 .event-banner {
     width: 100%;
+    max-width: 350px;
     border-radius: var(--image-border-radius);
     box-shadow: 0 10px 10px var(--shadow-color);
+    margin: auto;
     margin-bottom: 30px;
 }
 
@@ -22,63 +24,60 @@ main {
     display: flex;
 }
 
-section {
-    width: 80%;
-}
-
 .event-name {
     color: var(--main-color);
     font-size: var(--title-size);
     margin-bottom: 30px;
 }
 
-.event-info-title {
-    font-size: 1.5rem;
-    margin: 20px 0;
-    color: var(--title-color);
-    font-weight: var(--second-title-weight);
+form {
+    width: 100%;
+    padding: 30px;
 }
 
-.event-info {
-    text-indent: var(--paragraph-text-indent);
+fieldset {
+    border: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+
+legend {
+    color: var(--main-color);
+    font-weight: 800;
+    font-size: 30px;
+    margin: 0;
+}
+
+label {
     color: var(--paragraph-color);
-    width: 90%;
+    margin-bottom: 10px;
 }
 
-section > ul {
-    margin: 0 20px;
+.confirm-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: var(--input-background-color);
     color: var(--paragraph-color);
-}
-
-.slider {
-    width: 90%;
-    display: grid;
-    grid-auto-flow: column;
-    scroll-behavior: auto;
-    gap: 1.2rem;
-    overflow-y: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    margin: 20px 0;
-    border-radius: var(--image-border-radius);
-}
-
-.slider-image {
-    width: 700px;
-    border-radius: var(--image-border-radius);
     box-shadow: 0 10px 10px var(--shadow-color);
 }
 
-.redirect-confirm-page {
-    display: block;
-    width: 90%;
-    margin-top: 10px;
-    padding: 16px;
+.submit-button {
+    width: 100%;
+    padding: 16px 0;
+    margin: 25px 0;
+    border: none;
+    outline: none;
     border-radius: var(--border-radius);
-    text-align: center;
-    text-decoration: none;
-    font-weight: 500;
+    text-transform: uppercase;
+    font-weight: 600;
     color: var(--button-text-color);
     background-color: var(--main-color);
     cursor: pointer;
@@ -86,12 +85,12 @@ section > ul {
     transition: all 0.3s ease;
 }
 
-.redirect-confirm-page:hover {
+.submit-button:hover {
     background-color: var(--main-color-hover);
 }
 
 aside {
-    max-height: 650px;
+    min-height: 650px;
     background-color: var(--input-background-color);
     padding: 20px;
     border-radius: var(--border-radius);
@@ -104,6 +103,7 @@ aside {
 
 aside > hr {
     opacity: 0.2;
+    margin: 10px 0;
 }
 
 .event-aside-title {
@@ -123,11 +123,6 @@ aside > hr {
 }
 
 @media screen and (min-width:1024px) and (max-width:1439px) {
-
-    .event-content {
-        justify-content: space-around;
-    }
-
     section {
         width: 60%;
     }
@@ -141,23 +136,6 @@ aside > hr {
     .event-content {
         flex-direction: column;
     }
-
-    section {
-        width: 100%;
-    }
-
-    .event-info {
-        width: 100%;
-    }
-
-    .slider {
-        width: 100%;
-    }
-
-    .redirect-confirm-page {
-        width: 100%;
-        margin-bottom: 40px;
-    }
 }
 
 @media screen and (max-width:767px) {
@@ -169,20 +147,7 @@ aside > hr {
         flex-direction: column;
     }
 
-    section {
-        width: 100%;
-    }
-
-    .event-info {
-        width: 100%;
-    }
-
-    .slider {
-        width: 100%;
-    }
-
-    .redirect-confirm-page {
-        width: 100%;
-        margin-bottom: 40px;
+    form {
+        padding: 0;
     }
 }

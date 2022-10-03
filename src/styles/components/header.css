@@ -9,9 +9,13 @@ header {
 .header-title {
     font-size: var(--title-size);
     font-weight: var(--title-weight);
-    color: var(--title-color);
     letter-spacing: 3px;
     margin: 10px;
+}
+
+.index-redirect {
+    color: var(--title-color);
+    text-decoration: none;
 }
 
 .header-links, #connect-redirect {

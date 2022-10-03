@@ -43,7 +43,6 @@ section {
 @media screen and (max-width:767px) {
     main {
         display: block;
-        margin-top: 30px;
     }
 
     section {

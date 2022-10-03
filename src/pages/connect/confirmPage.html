@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Importação de estilos -->
+    <link rel="stylesheet" href="../../styles/config.css">
+    <link rel="stylesheet" href="../../styles/confirmPage.css">
+    <link rel="stylesheet" href="../../styles/components/header.css">
+
+    <title>Confirme sua presença</title>
+</head>
+<body>
+    <header>
+        <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
+
+        <nav>
+            <a href="../eventFeedPage.html" class="header-links">Eventos</a>
+            <a href="../aboutPage.html" class="header-links">Sobre</a>
+            <a href="../contactPage.html" class="header-links">Contato</a>
+            <a href="./registerPage.html" id="connect-redirect">Não possui uma conta?</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="event-content">
+            <aside>
+                <h2 class="event-name">Nome do Evento</h2>
+
+                <img src="../../../assets/uploads/eventBanner.jpg" alt="Banner do evento" class="event-banner">
+
+                <h3 class="event-aside-title">Valor do ingresso</h3>
+                <p class="event-aside-info event-aside-ticket">100,00</p>
+                <hr>
+            
+                <h3 class="event-aside-title">Local</h3>
+                <p class="event-aside-info event-aside-address">Rua São Mateus, 100</p>
+                <hr>
+            
+                <h3 class="event-aside-title">Data</h3>
+                <p class="event-aside-info event-aside-date">31/12/2022</p>
+                <hr>
+            
+                <h3 class="event-aside-title">Horário</h3>
+                <p class="event-aside-info event-aside-hour">20:00</p>
+                <hr>
+            
+                <h3 class="event-aside-title">Capacidade máxima</h3>
+                <p class="event-aside-info event-aside-capacity">400</p>
+                <hr>
+            
+                <h3 class="event-aside-title">Email de contato</h3>
+                <p class="event-aside-info event-aside-email">devmoreno2003@gmail.com</p>
+                <hr>
+            
+                <h3 class="event-aside-title">Telefone de contato</h3>
+                <p class="event-aside-info event-aside-tel">(32) 00000-0000</p>
+            </aside>
+            
+            <form action="">
+                <fieldset>
+                    <legend>Confirme sua presença</legend>
+
+                    <label for="confirm-name">Nome</label>
+                    <input type="text" name="confirm-name" id="confirm-name" class="confirm-input" required>
+
+                    <label for="confirm-email">Email</label>
+                    <input type="email" name="confirm-email" id="confirm-email" class="confirm-input" required>
+
+                    <label for="confirm-tel">Telefone</label>
+                    <input type="tel" name="confirm-tel" id="confirm-tel" class="confirm-input" required>
+
+                    <label for="confirm-cpf">CPF</label>
+                    <input type="text" name="confirm-cpf" id="confirm-cpf" class="confirm-input" required>
+
+                    <input type="submit" value="Confirmar Presença" class="submit-button">
+                </fieldset>
+            </form>
+
+            
+        </div>
+    </main>
+</body>
+</html>
