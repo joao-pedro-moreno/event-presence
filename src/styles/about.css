@@ -26,3 +26,21 @@ main {
     color: var(--paragraph-color);
     text-indent: var(--paragraph-text-indent);
 }
+
+@media screen and (min-width:1024px) and (max-width:1500px) {
+    main {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width:767px) and (max-width:1023px) {
+    main {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:767px) {
+    main {
+        width: 90%;
+    }
+}
