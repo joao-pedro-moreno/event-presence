@@ -1,74 +1,73 @@
 main {
     max-width: 1400px;
     display: flex;
-    justify-content: flex-start;
-    margin: 20px auto;
     background-color: var(--main-background-color);
     border-radius: var(--border-radius);
     padding: 30px;
+    margin: 20px auto;
 }
 
 .profile-content {
+    width: 100%;
+    height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 aside {
-    width: 300px;
+    width: 25%;
     height: 100%;
     background-color: var(--input-background-color);
-    padding: 20px;
     border-radius: var(--border-radius);
-    display: flex;
-    flex-direction: column;
+    padding: 20px;
     box-shadow: 0 10px 10px var(--shadow-color);
-    overflow-x: hidden;
+    margin-right: 10px;
 }
 
 .profile-image {
-    width: 200px;
+    width: 100%;
     border-radius: 100%;
     border: 2px solid var(--main-color);
-    padding: 5px;
-    margin: 0 auto;
+    padding: 10px;
+    margin: auto;
 }
 
 .user-name {
-    color: #fff;
+    color: var(--title-color);
     font-weight: 400;
-    margin-top: 10px;
 }
 
 .user-info {
     color: var(--paragraph-color);
-    margin: 10px 0;
+}
+
+hr {
+    opacity: 0.5;
+    margin: 0 20px;
 }
 
 section {
-    width: calc(100% - 300px);
+    width: 75%;
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
 }
 
 .section-title {
-    margin-left: 10px;
     color: var(--main-color);
-    font-weight: 400;
+    font-weight: 500;
     font-size: var(--title-size);
+    margin-left: 10px;
 }
 
 .user-events {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
 }
 
 .event-create {
-    width: 300px;
+    width: 30%;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -84,7 +83,7 @@ section {
 }
 
 .event-create:hover {
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .event-create:hover .bx-plus {
@@ -103,4 +102,167 @@ section {
 .create-event-span {
     font-size: 1.4rem;
     transition: all 0.3s ease;
+}
+
+article {
+    width: 30%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--input-background-color);
+    border-radius: var(--border-radius);
+    margin: 10px;
+    padding: 10px;
+    color: var(--paragraph-color);
+    box-shadow: 0 10px 10px var(--shadow-color);
+}
+
+.event-banner {
+    width: 100%;
+    max-width: 500px;
+    border-radius: var(--image-border-radius);
+}
+
+.event-name {
+    color: var(--title-color);
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.manage-event-button {
+    width: 100%;
+    padding: 16px 0;
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--button-text-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+    box-shadow: 0 10px 10px -12px var(--green-shadow-color);
+    transition: all 0.3s ease;
+}
+
+.manage-event-button:hover {
+    background-color: var(--main-color-hover);
+}
+
+@media screen and (min-width:1024px) and (max-width:1439px) {
+    main {
+        width: 90%;
+    }
+
+    .profile-content {
+        flex-direction: column;
+    }
+    
+    aside {
+        width: 100%;
+        display: flex   ;
+    }
+
+    .profile-image {
+        width: 40%;
+    }
+
+    .profile-info {
+        margin-left: 20px;
+        width: 60%;
+    }
+
+    hr {
+        margin: 25px 0 10px 0;
+    }
+
+    section {
+        width: 100%;
+    }
+
+    .user-events {
+        justify-content: center;
+    }
+
+    article, .event-create {
+        width: 45%;
+    }
+}
+
+@media screen and (min-width:767px) and (max-width:1023px) {
+    main {
+        width: 90%;
+    }
+
+    .profile-content {
+        flex-direction: column;
+    }
+    
+    aside {
+        width: 100%;
+        display: flex   ;
+    }
+
+    .profile-image {
+        width: 40%;
+    }
+
+    .profile-info {
+        margin-left: 20px;
+        width: 60%;
+    }
+
+    hr {
+        margin: 25px 0 10px 0;
+    }
+
+    section {
+        width: 100%;
+    }
+
+    article, .event-create {
+        width: 45%;
+    }
+
+    .user-events {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width:767px) {
+    main {
+        width: 90%;
+    }
+
+    .profile-content {
+        flex-direction: column;
+    }
+
+    aside {
+        width: 100%;
+    }
+
+    #user-email {
+        font-size: 12px;
+    }
+
+    hr {
+        margin: 25px 0 10px 0;
+    }
+
+    section {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .event-create, article {
+        width: 100%;
+    }
+
+    .create-event-span {
+        font-size: 1rem;
+    }
 }
