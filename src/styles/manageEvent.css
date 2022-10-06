@@ -1,0 +1,91 @@
+main {
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px auto;
+    background-color: var(--main-background-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+}
+
+.event-banner {
+    width: 100%;
+    max-width: 350px;
+    border-radius: var(--image-border-radius);
+    box-shadow: 0 10px 10px var(--shadow-color);
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.event-content {
+    width: 100%;
+    display: flex;
+}
+
+.event-name {
+    color: var(--main-color);
+    font-size: var(--title-size);
+    margin-bottom: 30px;
+}
+
+aside {
+    width: 25%;
+    background-color: var(--input-background-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 10px var(--shadow-color);
+    overflow-x: hidden;
+}
+
+aside > hr {
+    opacity: 0.2;
+    margin: 10px 0;
+}
+
+.event-aside-title {
+    color: var(--main-color);
+}
+
+.event-aside-info {
+    color: var(--paragraph-color);
+}
+
+.event-aside-ticket::before {
+    content: "R$ ";
+}
+
+.event-aside-hour::after {
+    content: " horas";
+}
+
+section {
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.event-confirmed-names {
+    color: var(--main-color);
+    margin-bottom: 10px;
+}
+
+
+.table-info {
+    color: var(--main-color);
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+th {
+    color: var(--paragraph-color);
+    padding: 10px;
+    border: 1px solid var(--paragraph-color);
+    font-weight: 300;
+}
