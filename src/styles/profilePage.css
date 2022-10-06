@@ -1,0 +1,106 @@
+main {
+    max-width: 1400px;
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px auto;
+    background-color: var(--main-background-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+}
+
+.profile-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+aside {
+    width: 300px;
+    height: 100%;
+    background-color: var(--input-background-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 10px var(--shadow-color);
+    overflow-x: hidden;
+}
+
+.profile-image {
+    width: 200px;
+    border-radius: 100%;
+    border: 2px solid var(--main-color);
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.user-name {
+    color: #fff;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.user-info {
+    color: var(--paragraph-color);
+    margin: 10px 0;
+}
+
+section {
+    width: calc(100% - 300px);
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.section-title {
+    margin-left: 10px;
+    color: var(--main-color);
+    font-weight: 400;
+    font-size: var(--title-size);
+}
+
+.user-events {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.event-create {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--input-background-color);
+    border-radius: var(--border-radius);
+    margin: 10px;
+    text-decoration: none;
+    color: var(--paragraph-color);
+    box-shadow: 0 10px 10px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.event-create:hover {
+    opacity: 0.8;
+}
+
+.event-create:hover .bx-plus {
+    color: var(--main-color);
+}
+
+.event-create:hover .create-event-span {
+    color: var(--main-color);
+}
+
+.bx-plus {
+    font-size: 100px;
+    transition: all 0.3s ease;
+}
+
+.create-event-span {
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
+}
