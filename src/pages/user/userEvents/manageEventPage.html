@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,6 +16,7 @@
 
     <title>Gerencie seu evento</title>
 </head>
+
 <body>
     <header>
         <h1 class="header-title"><a href="../../../../index.html" class="index-redirect">Event Presence</a></h1>
@@ -37,75 +39,103 @@
                 <h3 class="event-aside-title">Valor do ingresso</h3>
                 <p class="event-aside-info event-aside-ticket">100,00</p>
                 <hr>
-            
+
                 <h3 class="event-aside-title">Local</h3>
                 <p class="event-aside-info event-aside-address">Rua São Mateus, 100</p>
                 <hr>
-            
+
                 <h3 class="event-aside-title">Data</h3>
                 <p class="event-aside-info event-aside-date">31/12/2022</p>
                 <hr>
-            
+
                 <h3 class="event-aside-title">Horário</h3>
                 <p class="event-aside-info event-aside-hour">20:00</p>
                 <hr>
-            
+
                 <h3 class="event-aside-title">Capacidade máxima</h3>
                 <p class="event-aside-info event-aside-capacity">400</p>
                 <hr>
-            
+
                 <h3 class="event-aside-title">Email de contato</h3>
                 <p class="event-aside-info event-aside-email">devmoreno2003@gmail.com</p>
                 <hr>
-            
+
                 <h3 class="event-aside-title">Telefone de contato</h3>
                 <p class="event-aside-info event-aside-tel">(32) 00000-0000</p>
+
+                <hr>
+                <a href="./registerEventAdmin.html" class="redirect-button">Adicionar administradores</a>
+                <a href="./editEvent.html" class="redirect-button">Editar evento</a>
             </aside>
 
             <section>
+                <h2 class="manage-event-title">Administradores</h2>
+                <div class="event-admins">
+                    <img src="../../../../assets/uploads/profileImage.jfif" alt="admin" class="admin-profile-image">
+                    <img src="../../../../assets/uploads/profileImage.jfif" alt="admin" class="admin-profile-image">
+                    <img src="../../../../assets/uploads/profileImage.jfif" alt="admin" class="admin-profile-image">
+                    <img src="../../../../assets/uploads/profileImage.jfif" alt="admin" class="admin-profile-image">
+                    <img src="../../../../assets/uploads/profileImage.jfif" alt="admin" class="admin-profile-image">
+                    <img src="../../../../assets/uploads/profileImage.jfif" alt="admin" class="admin-profile-image">
+                    <img src="../../../../assets/uploads/profileImage.jfif" alt="admin" class="admin-profile-image">
+                </div>
 
-                <h2 class="event-confirmed-names">Pessoas Confirmadas</h2>
+                <h2 class="manage-event-title">Pessoas Confirmadas</h2>
 
-                <table>
-                    <tr>
-                        <th class="table-info">Nome</th>
-                        <th class="table-info">Email</th>
-                        <th class="table-info">Telefone</th>
-                        <th class="table-info">CPF</th>
-                    </tr>
-                    <tr>
-                        <th>João Pedro Moreno</th>
-                        <th>devmoreno2003@gmail.com</th>
-                        <th>(32)00000-0000</th>
-                        <th>000.000.000-00</th>
-                    </tr>
-                    <tr>
-                        <th>João Pedro Moreno</th>
-                        <th>devmoreno2003@gmail.com</th>
-                        <th>(32)00000-0000</th>
-                        <th>000.000.000-00</th>
-                    </tr>
-                    <tr>
-                        <th>João Pedro Moreno</th>
-                        <th>devmoreno2003@gmail.com</th>
-                        <th>(32)00000-0000</th>
-                        <th>000.000.000-00</th>
-                    </tr>
-                    <tr>
-                        <th>João Pedro Moreno</th>
-                        <th>devmoreno2003@gmail.com</th>
-                        <th>(32)00000-0000</th>
-                        <th>000.000.000-00</th>
-                    </tr>
-                    <tr>
-                        <th>João Pedro Moreno</th>
-                        <th>devmoreno2003@gmail.com</th>
-                        <th>(32)00000-0000</th>
-                        <th>000.000.000-00</th>
-                    </tr>
-                </table>
+                <div class="table">
+                    <table id="tableExport">
+                        <tr>
+                            <th class="table-info">Nome</th>
+                            <th class="table-info">Email</th>
+                            <th class="table-info">Telefone</th>
+                            <th class="table-info">CPF</th>
+                        </tr>
+                        <tr>
+                            <th>João Pedro Moreno</th>
+                            <th>devmoreno2003@gmail.com</th>
+                            <th>(32)00000-0000</th>
+                            <th>000.000.000-00</th>
+                        </tr>
+                        <tr>
+                            <th>João Pedro Moreno</th>
+                            <th>devmoreno2003@gmail.com</th>
+                            <th>(32)00000-0000</th>
+                            <th>000.000.000-00</th>
+                        </tr>
+                        <tr>
+                            <th>João Pedro Moreno</th>
+                            <th>devmoreno2003@gmail.com</th>
+                            <th>(32)00000-0000</th>
+                            <th>000.000.000-00</th>
+                        </tr>
+                        <tr>
+                            <th>João Pedro Moreno</th>
+                            <th>devmoreno2003@gmail.com</th>
+                            <th>(32)00000-0000</th>
+                            <th>000.000.000-00</th>
+                        </tr>
+                    </table>
+                </div>
+
+                <button id="exportTable">Baixar tabela</button>
             </section>
         </div>
     </main>
-</body>
-</html>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="../../../js/jquery.btechco.excelexport.js"></script>
+    <script src="../../../js/jquery.base64.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#exportTable").click(function () {
+                $("#tableExport").btechco_excelexport({
+                    containerid: "tableExport",
+                    datatype: $datatype.Table,
+                    filename: 'confirmedNames'
+                });
+            });
+        });
+    </script>
+</body >
+</html >

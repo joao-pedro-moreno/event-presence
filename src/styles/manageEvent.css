@@ -15,7 +15,7 @@ main {
     max-width: 350px;
     border-radius: var(--image-border-radius);
     box-shadow: 0 10px 10px var(--shadow-color);
-    margin: auto;
+    margin: 20px auto;
     margin-bottom: 30px;
 }
 
@@ -32,12 +32,12 @@ main {
 
 aside {
     width: 25%;
+    max-height: 1050px;
     background-color: var(--input-background-color);
     padding: 20px;
     border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     box-shadow: 0 10px 10px var(--shadow-color);
     overflow-x: hidden;
 }
@@ -63,6 +63,28 @@ aside > hr {
     content: " horas";
 }
 
+.redirect-button {
+    width: 100%;
+    padding: 16px 0;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--button-text-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+    box-shadow: 0 10px 10px -12px var(--green-shadow-color);
+    transition: all 0.3s ease;
+}
+
+.redirect-button:hover {
+    background-color: var(--main-color-hover);
+}
+
 section {
     width: 75%;
     display: flex;
@@ -71,11 +93,27 @@ section {
     flex-direction: column;
 }
 
-.event-confirmed-names {
+.manage-event-title {
     color: var(--main-color);
     margin-bottom: 10px;
 }
 
+.event-admins {
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.admin-profile-image {
+    width: 8%;
+    border-radius: 100%;
+    border: 2px solid var(--main-color);
+    padding: 5px;
+    margin: 5px 10px;
+}
 
 .table-info {
     color: var(--main-color);
@@ -88,4 +126,163 @@ th {
     padding: 10px;
     border: 1px solid var(--paragraph-color);
     font-weight: 300;
+}
+
+#exportTable {
+    padding: 16px;
+    margin: 10px 0;
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--button-text-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+    box-shadow: 0 10px 10px -12px var(--green-shadow-color);
+    transition: all 0.3s ease;
+}
+
+#exportTable:hover {
+    background-color: var(--main-color-hover);
+}
+
+@media screen and (min-width:1024px) and (max-width:1439px) {
+    main {
+        width: 90%;
+    }
+
+    .event-content {
+        flex-direction: column;
+    }
+
+    aside {
+        width: 100%;
+        max-height: none;
+        margin-bottom: 10px;
+    }
+
+    section {
+        width: 100%;
+    }
+
+    .event-admins {
+        width: 100%;
+    }
+
+    .admin-profile-image {
+        width: 15%;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    table {
+        margin: auto;
+    }
+
+    th {
+        white-space: nowrap;
+    }
+}
+
+@media screen and (min-width:767px) and (max-width:1023px) {
+    main {
+        width: 90%;
+    }
+
+    .event-content {
+        flex-direction: column;
+    }
+
+    aside {
+        width: 100%;
+        max-height: none;
+        margin-bottom: 10px;
+    }
+
+    section {
+        width: 100%;
+    }
+
+    .event-admins {
+        width: 100%;
+    }
+
+    .admin-profile-image {
+        width: 15%;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+        display: grid;
+        grid-auto-flow: column;
+        scroll-behavior: auto;
+        gap: 1.2rem;
+        overflow-y: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        margin: 20px 0;
+    }
+
+    th {
+        white-space: nowrap;
+    }
+}
+
+@media screen and (max-width:767px) {
+    main {
+        width: 90%;
+    }
+
+    .event-content {
+        flex-direction: column;
+    }
+
+    aside {
+        width: 100%;
+        max-height: none;
+        margin-bottom: 10px;
+    }
+
+    section {
+        width: 100%;
+    }
+
+    .event-admins {
+        width: 100%;
+    }
+
+    .admin-profile-image {
+        width: 20%;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+        display: grid;
+        grid-auto-flow: column;
+        scroll-behavior: auto;
+        gap: 1.2rem;
+        overflow-y: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        margin: 20px 0;
+    }
+
+    th {
+        white-space: nowrap;
+    }
 }

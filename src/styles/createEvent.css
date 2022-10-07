@@ -23,7 +23,7 @@ label {
     font-size: 1.3rem;
 }
 
-.create-event-input {
+.create-event-input, .register-admin-input {
     width: 100%;
     border: none;
     outline: none;
