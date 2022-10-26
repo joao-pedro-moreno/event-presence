@@ -1,3 +1,9 @@
+<?php
+    include('../../php/protect.php');
+
+    $user = $_SESSION['user'];
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -26,19 +32,22 @@
             <a href="../eventFeedPage.html" class="header-links">Eventos</a>
             <a href="../aboutPage.html" class="header-links">Sobre</a>
             <a href="../contactPage.html" class="header-links">Contato</a>
-            <a href="../connect/registerPage.html" id="connect-redirect">Não possui uma conta?</a>
+            <a href="../connect/registerPage.php" id="connect-redirect">Não possui uma conta?</a>
         </nav>
     </header>
 
     <main>
         <div class="profile-content">
             <aside>
-                <img src="../../../assets/uploads/profileImage.jfif" alt="" class="profile-image">
+                <img src="<?php echo $user['path']; ?>" alt="" class="profile-image">
                 <div class="profile-info">
-                    <h2 class="user-name">João Pedro Moreno</h2>
-                    <p class="user-info" id="user-username">jpm0r3n0</p>
-                    <p class="user-info" id="user-email">devmoreno2003@gmail.com</p>
+                    <h2 class="user-name"><?php echo $user['name']; ?></h2>
+                    <p class="user-info" id="user-username"><?php echo $user['user']; ?></p>
+                    <p class="user-info" id="user-email"><?php echo $user['email']; ?></p>
                 </div>
+
+                <a href="./editProfile.php" class="edit-profile">Editar Perfil</a>
+                <a href="../../php/logout.php" class="disconnect-profile">Desconectar</a>
             </aside>
 
             <hr>

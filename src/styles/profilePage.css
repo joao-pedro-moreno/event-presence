@@ -46,6 +46,27 @@ hr {
     margin: 0 20px;
 }
 
+.edit-profile {
+    width: 100%;
+    padding: 16px 0;
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--button-text-color);
+    background-color: var(--main-color);
+    cursor: pointer;
+    box-shadow: 0 10px 10px -12px var(--green-shadow-color);
+    transition: all 0.3s ease;
+}
+
+.edit-profile:hover {
+    background-color: var(--main-color-hover);
+}
+
 section {
     width: 75%;
     display: flex;

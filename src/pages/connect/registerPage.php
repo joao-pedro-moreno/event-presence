@@ -1,3 +1,35 @@
+<?php 
+    include('../../php/connection.php');
+
+    if (isset($_POST['register-user']) || isset($_POST['register-email']) || isset($_POST['register-password']) || isset($_POST['register-confirm-password'])) {
+        if (strlen($_POST['register-user']) == 0 || strlen($_POST['register-email']) == 0 || strlen($_POST['register-password']) == 0 || strlen($_POST['register-confirm-password']) == 0) {
+            echo "Insira valores válidos";
+        } else {
+            $user = $mysqli->real_escape_string($_POST['register-user']);
+            $email = $mysqli->real_escape_string($_POST['register-email']);
+            $password = $mysqli->real_escape_string($_POST['register-password']);
+            $confirm_password = $mysqli->real_escape_string($_POST['register-confirm-password']);
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+            $sql_email_verification_code = "SELECT `email` FROM `users` WHERE `email` = '$email' LIMIT 1";
+            $sql_email_verification_exec = $mysqli->query($sql_email_verification_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+            $email_verification = $sql_email_verification_exec->fetch_assoc();
+
+            if (empty($email_verification)) {
+                if ($password == $confirm_password) {
+                    $sql_register_user_code = "INSERT INTO users(user,email,pass) VALUES ('$user','$email','$password_hash')";
+                    $sql_query = $mysqli->query($sql_register_user_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+                } else {
+                    echo "Suas senhas são diferentes";
+                }
+            } else {
+                echo "Email já cadastrado";
+            }
+
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,7 +56,7 @@
             <a href="../eventFeedPage.html" class="header-links">Eventos</a>
             <a href="../aboutPage.html" class="header-links">Sobre</a>
             <a href="../contactPage.html" class="header-links">Contato</a>
-            <a href="./loginPage.html" id="connect-redirect">Já possui uma conta?</a>
+            <a href="./loginPage.php" id="connect-redirect">Já possui uma conta?</a>
         </nav>
     </header>
 
@@ -32,10 +64,10 @@
         <section>
             <h2 class="content-subtitle">Crie sua conta para administrar seus eventos</h2>
 
-            <img src="../../assets/disco-ball-animate.svg" alt="" class="main-image">
+            <img src="../../../assets/ball.svg" alt="" class="main-image">
         </section>
 
-        <form action="">
+        <form action="#" method="POST">
             <fieldset>
                 <legend>Criar conta</legend>
 
@@ -53,7 +85,7 @@
 
                 <input type="submit" value="Criar conta" class="submit-button">
 
-                <span class="form-redirect">Já possui uma conta? <a href="./loginPage.html" class="form-redirect-link">Faça login</a></span>
+                <span class="form-redirect">Já possui uma conta? <a href="./loginPage.php" class="form-redirect-link">Faça login</a></span>
             </fieldset>
         </form>
     </main>
