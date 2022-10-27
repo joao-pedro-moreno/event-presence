@@ -18,7 +18,7 @@ main {
 
 article {
     max-width: 400px;
-    min-height: 500px;
+    height: 588px;
     background-color: var(--input-background-color);
     padding: 20px;
     margin: 10px;
@@ -45,6 +45,11 @@ article {
     color: var(--paragraph-color);
     text-indent: var(--paragraph-text-indent);
     margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical; 
 }
 
 .card-date, .card-hour {

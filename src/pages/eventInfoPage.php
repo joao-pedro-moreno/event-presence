@@ -1,3 +1,18 @@
+<?php
+    include('../php/connection.php');
+
+    if (isset($_GET['e'])) {
+        $event_id = $_GET['e'];
+
+        $sql_code = "SELECT * FROM `events` WHERE id = '$event_id'";
+        $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+
+        $event = $sql_query->fetch_assoc();
+    } else {
+        header("Location: eventFeedPage.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,7 +35,7 @@
         <h1 class="header-title"><a href="../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
-            <a href="./eventFeedPage.html" class="header-links">Eventos</a>
+            <a href="./eventFeedPage.php" class="header-links">Eventos</a>
             <a href="./aboutPage.html" class="header-links">Sobre</a>
             <a href="./contactPage.html" class="header-links">Contato</a>
             <a href="./connect/registerPage.php" id="connect-redirect">Não possui uma conta?</a>
@@ -28,24 +43,31 @@
     </header>
 
     <main>
-        <img src="../../assets/uploads/eventBanner.jpg" alt="Banner do evento" class="event-banner">
+        <img src="../../assets/uploads/<?php echo $event['banner']; ?>" alt="Banner do evento" class="event-banner">
 
         <div class="event-content">
             <section>
-                <h2 class="event-name">Nome do Evento</h2>
+                <h2 class="event-name"><?php echo $event['name']; ?></h2>
                 <h3 class="event-info-title">Descrição</h3>
-                <p class="event-info event-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae harum magnam perspiciatis repudiandae inventore possimus quasi doloremque voluptas, quia vel eligendi optio provident illo accusantium fugiat rerum ratione illum delectus. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque, saepe, neque nemo ipsa facere delectus magni praesentium ea exercitationem atque perspiciatis debitis libero corporis molestias? Labore distinctio praesentium mollitia nisi. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere est recusandae perferendis provident aliquam labore sunt dolores sint sapiente, quos nobis illum deserunt nulla adipisci error consequuntur corrupti nisi hic!</p>
+                <p class="event-info event-desc"><?php echo $event['description']; ?></p>
                 <h3 class="event-info-title">Atrações</h3>
                 <ul>
-                    <li class="event-attractions">Metallica</li>
-                    <li class="event-attractions">AC/DC</li>
-                    <li class="event-attractions">Kaleo</li>
-                    <li class="event-attractions">Pink Floyd</li>
+                    <?php 
+                        $attractions = explode("," ,$event['attractions']);
+                        $number_of_attractions = count($attractions);
+
+                        for ($i = 0; $i < $number_of_attractions; $i++) {
+                            
+                    ?>
+                        <li class="event-attractions"><?php echo $attractions[$i]; ?></li>
+                    <?php
+                        }
+                    ?>
                 </ul>
                 <h3 class="event-info-title">Regras</h3>
-                <p class="event-info event-rules">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum eveniet numquam et ut maiores harum asperiores, veritatis ipsum culpa quam in officiis magnam ab saepe quod assumenda aliquam? Eaque, voluptates. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsa cum minus numquam, tenetur exercitationem dolores quis error odio quia atque ab voluptatem, placeat animi ipsum! Enim impedit quos esse earum.</p>
+                <p class="event-info event-rules"><?php echo $event['rules']; ?></p>
 
-                <div class="slider">
+                <!-- <div class="slider">
                     <img src="../../assets/uploads/eventPhoto.jpg" alt="" class="slider-image">
                     <img src="../../assets/uploads/eventPhoto2.jpg" alt="" class="slider-image">
                     <img src="../../assets/uploads/eventPhoto.jpg" alt="" class="slider-image">
@@ -54,38 +76,42 @@
                     <img src="../../assets/uploads/eventPhoto2.jpg" alt="" class="slider-image">                    
                     <img src="../../assets/uploads/eventPhoto.jpg" alt="" class="slider-image">
                     <img src="../../assets/uploads/eventPhoto2.jpg" alt="" class="slider-image">
-                </div>
+                </div> -->
 
-                <a href="./connect/confirmPage.html" class="redirect-confirm-page">Confirmar Presença</a>
+                <a href="./connect/confirmPage.php?e=<?php echo $event_id; ?>" class="redirect-confirm-page">Confirmar Presença</a>
             </section>
             
             <aside>
                 <h4 class="event-aside-title">Valor do ingresso</h4>
-                <p class="event-aside-info event-aside-ticket">100,00</p>
+                <p class="event-aside-info event-aside-ticket"><?php echo $event['ticket']; ?></p>
+                <hr>
+
+                <h4 class="event-aside-title">Idade mínima</h4>
+                <p class="event-aside-info event-aside-age"><?php echo $event['age']; ?></p>
                 <hr>
             
                 <h4 class="event-aside-title">Local</h4>
-                <p class="event-aside-info event-aside-address">Rua São Mateus, 100</p>
+                <p class="event-aside-info event-aside-address"><?php echo $event['address']; ?></p>
                 <hr>
             
                 <h4 class="event-aside-title">Data</h4>
-                <p class="event-aside-info event-aside-date">31/12/2022</p>
+                <p class="event-aside-info event-aside-date"><?php echo $event['date']; ?></p>
                 <hr>
             
                 <h4 class="event-aside-title">Horário</h4>
-                <p class="event-aside-info event-aside-hour">20:00</p>
+                <p class="event-aside-info event-aside-hour"><?php echo $event['hour_start']; ?></p>
                 <hr>
             
                 <h4 class="event-aside-title">Capacidade máxima</h4>
-                <p class="event-aside-info event-aside-capacity">400</p>
+                <p class="event-aside-info event-aside-capacity"><?php echo $event['capacity']; ?></p>
                 <hr>
             
                 <h4 class="event-aside-title">Email de contato</h4>
-                <p class="event-aside-info event-aside-email">devmoreno2003@gmail.com</p>
+                <p class="event-aside-info event-aside-email"><?php echo $event['contact_email']; ?></p>
                 <hr>
             
                 <h4 class="event-aside-title">Telefone de contato</h4>
-                <p class="event-aside-info event-aside-tel">(32) 00000-0000</p>
+                <p class="event-aside-info event-aside-tel"><?php echo $event['contact_tel']; ?></p>
             </aside>
         </div>
     </main>

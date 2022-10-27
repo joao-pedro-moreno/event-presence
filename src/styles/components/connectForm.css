@@ -78,6 +78,16 @@ label {
     color: var(--main-color-hover);
 }
 
+.forgot-password {
+    color: var(--paragraph-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--main-color);
+}
+
 @media screen and (min-width:767px) and (max-width:1023px) {
     form {
         width: 350px;

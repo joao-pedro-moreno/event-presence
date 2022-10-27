@@ -63,6 +63,28 @@ input[type="submit"]:hover {
 
 .cancel-edit {
     width: 100%;
+    padding: 10px;
+    border: 2px solid var(--error-color);
+    outline: none;
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--error-color);
+    background-color: transparent;
+    cursor: pointer;
+    box-shadow: 0 10px 10px -12px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.cancel-edit:hover {
+    background-color: var(--error-color);
+    color: var(--paragraph-color);
+}
+
+/* .cancel-edit {
+    width: 100%;
     padding: 16px 0;
     margin: 25px 0;
     border: none;
@@ -81,7 +103,7 @@ input[type="submit"]:hover {
 
 .cancel-edit:hover {
     background-color: var(--placeholder-color);
-}
+} */
 
 @media screen and (min-width:1024px) and (max-width:1439px) {
     main {

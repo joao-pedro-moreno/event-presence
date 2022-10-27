@@ -2,7 +2,9 @@
     include('../../php/connection.php');
 
     if (isset($_POST['login-email']) || isset($_POST['login-password'])) {
-        if (strlen($_POST['login-email']) == 0 || strlen($_POST['login-password'])) {
+        if (strlen($_POST['login-email']) == 0 || strlen($_POST['login-password']) == 0) {
+            echo "Insira valores válidos";
+        } else {
             $email = $mysqli->real_escape_string($_POST['login-email']);
             $password = $mysqli->real_escape_string($_POST['login-password']);
 
@@ -50,7 +52,7 @@
         <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
-            <a href="../eventFeedPage.html" class="header-links">Eventos</a>
+            <a href="../eventFeedPage.php" class="header-links">Eventos</a>
             <a href="../aboutPage.html" class="header-links">Sobre</a>
             <a href="../contactPage.html" class="header-links">Contato</a>
             <a href="./registerPage.php" id="connect-redirect">Não possui uma conta?</a>
@@ -73,6 +75,8 @@
 
                 <label for="login-password">Senha</label>
                 <input type="password" name="login-password" id="login-password" class="connect-input" required>
+
+                <a href="./forgotPassword.php" class="forgot-password">Esqueceu a senha?</a>
 
                 <input type="submit" value="Logar" class="submit-button">
 

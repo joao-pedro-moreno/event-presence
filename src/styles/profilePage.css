@@ -39,6 +39,11 @@ aside {
 
 .user-info {
     color: var(--paragraph-color);
+    margin: 10px 0;
+}
+
+.user-info:last-child {
+    margin-bottom: 30px;
 }
 
 hr {
@@ -46,9 +51,15 @@ hr {
     margin: 0 20px;
 }
 
+.profile-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 .edit-profile {
     width: 100%;
-    padding: 16px 0;
+    padding: 10px;
     border: none;
     outline: none;
     border-radius: var(--border-radius);
@@ -65,6 +76,28 @@ hr {
 
 .edit-profile:hover {
     background-color: var(--main-color-hover);
+}
+
+.disconnect-profile {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--error-color);
+    outline: none;
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--error-color);
+    background-color: transparent;
+    cursor: pointer;
+    box-shadow: 0 10px 10px -12px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.disconnect-profile:hover {
+    background-color: var(--error-color);
+    color: var(--paragraph-color);
 }
 
 section {

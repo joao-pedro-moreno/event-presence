@@ -1,3 +1,10 @@
+<?php
+    include('../php/connection.php');
+
+    $sql_code = "SELECT `id`, `name`, `description`, `date`, `hour_start`, `banner` FROM `events` WHERE 1";
+    $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,7 +27,7 @@
         <h1 class="header-title"><a href="../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
-            <a href="./eventFeedPage.html" class="header-links">Eventos</a>
+            <a href="./eventFeedPage.php" class="header-links">Eventos</a>
             <a href="./aboutPage.html" class="header-links">Sobre</a>
             <a href="./contactPage.html" class="header-links">Contato</a>
             <a href="./connect/registerPage.php" id="connect-redirect">Não possui uma conta?</a>
@@ -30,8 +37,24 @@
     <h2 class="content-subtitle">Eventos</h2>
 
     <main>
+
+        <?php
+            while($data = $sql_query->fetch_array()) {
+        ?>
+            <article>
+                <img src="../../assets/uploads/<?php echo $data['banner'] ?>" alt="Banner do evento" class="card-image">
+
+                <h3 class="card-name"><?php echo $data['name'] ?></h3>
+                <p class="card-desc"><?php echo $data['description'] ?></p>
+                <span class="card-date"><?php echo $data['date'] ?></span>
+                <span class="card-hour"><?php echo $data['hour_start'] ?></span>
+                <a href="./eventInfoPage.php?e=<?php echo $data['id'] ?>" class="card-info-button">Mais informações</a>
+            </article>
+        <?php 
+            }
+        ?>
         
-        <article>
+        <!-- <article>
             <img src="../../assets/uploads/eventBanner.jpg" alt="Banner do evento" class="card-image">
 
             <h3 class="card-name">Nome do evento</h3>
@@ -79,7 +102,7 @@
             <span class="card-date">15/10</span>
             <span class="card-hour">20:00</span>
             <a href="./eventInfoPage.html" class="card-info-button">Mais informações</a>
-        </article>
+        </article> -->
 
     </main>
 </body>

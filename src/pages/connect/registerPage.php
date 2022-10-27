@@ -19,6 +19,19 @@
                 if ($password == $confirm_password) {
                     $sql_register_user_code = "INSERT INTO users(user,email,pass) VALUES ('$user','$email','$password_hash')";
                     $sql_query = $mysqli->query($sql_register_user_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+
+                    $sql_session_code = "SELECT * FROM `users` WHERE `email` = '$email' LIMIT 1";
+                    $sql_session_query = $mysqli->query($sql_session_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
+
+                    $user = $sql_session_query->fetch_assoc();
+
+                    if (!isset($_SESSION)) {
+                        session_start();
+                    }
+    
+                    $_SESSION['user'] = $user;
+
+                    header("Location: ../user/profilePage.php");
                 } else {
                     echo "Suas senhas são diferentes";
                 }
@@ -53,7 +66,7 @@
         <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
-            <a href="../eventFeedPage.html" class="header-links">Eventos</a>
+            <a href="../eventFeedPage.php" class="header-links">Eventos</a>
             <a href="../aboutPage.html" class="header-links">Sobre</a>
             <a href="../contactPage.html" class="header-links">Contato</a>
             <a href="./loginPage.php" id="connect-redirect">Já possui uma conta?</a>

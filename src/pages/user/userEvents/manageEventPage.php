@@ -1,5 +1,21 @@
+<?php
+    include('../../../php/connection.php');
+    include('../../../php/protect.php');
+
+    if (isset($_GET['e'])) {
+        $event_id = $_GET['e'];
+
+        $sql_code = "SELECT `id`, `owner_email`, `name`, `ticket`, `address`, `date`, `hour_start`, `hour_end`, `banner`, `capacity`, `age`, `contact_email`, `contact_tel` FROM `events` WHERE id = '$event_id'";
+        $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+
+        $event = $sql_query->fetch_assoc();
+    } else {
+        header("Location: ../../../../index.html");
+    }
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -22,7 +38,7 @@
         <h1 class="header-title"><a href="../../../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
-            <a href="../../eventFeedPage.html" class="header-links">Eventos</a>
+            <a href="../../eventFeedPage.php" class="header-links">Eventos</a>
             <a href="../../aboutPage.html" class="header-links">Sobre</a>
             <a href="../../contactPage.html" class="header-links">Contato</a>
             <a href="../../connect/registerPage.php" id="connect-redirect">Não possui uma conta?</a>
@@ -32,36 +48,40 @@
     <main>
         <div class="event-content">
             <aside>
-                <h2 class="event-name">Nome do Evento</h2>
+                <h2 class="event-name"><?php echo $event['name'] ?></h2>
 
-                <img src="../../../../assets/uploads/eventBanner.jpg" alt="Banner do evento" class="event-banner">
+                <img src="../../../../assets/uploads/<?php echo $event['banner'] ?>" alt="Banner do evento" class="event-banner">
 
                 <h3 class="event-aside-title">Valor do ingresso</h3>
-                <p class="event-aside-info event-aside-ticket">100,00</p>
+                <p class="event-aside-info event-aside-ticket"><?php echo $event['ticket'] ?></p>
                 <hr>
 
                 <h3 class="event-aside-title">Local</h3>
-                <p class="event-aside-info event-aside-address">Rua São Mateus, 100</p>
+                <p class="event-aside-info event-aside-address"><?php echo $event['address'] ?></p>
                 <hr>
 
                 <h3 class="event-aside-title">Data</h3>
-                <p class="event-aside-info event-aside-date">31/12/2022</p>
+                <p class="event-aside-info event-aside-date"><?php echo $event['date'] ?></p>
                 <hr>
 
                 <h3 class="event-aside-title">Horário</h3>
-                <p class="event-aside-info event-aside-hour">20:00</p>
+                <p class="event-aside-info event-aside-hour"><?php echo $event['hour_start'] ?></p>
+                <hr>
+
+                <h3 class="event-aside-title">Idade mínima</h3>
+                <p class="event-aside-info event-aside-age"><?php echo $event['age'] ?></p>
                 <hr>
 
                 <h3 class="event-aside-title">Capacidade máxima</h3>
-                <p class="event-aside-info event-aside-capacity">400</p>
+                <p class="event-aside-info event-aside-capacity"><?php echo $event['capacity'] ?></p>
                 <hr>
 
                 <h3 class="event-aside-title">Email de contato</h3>
-                <p class="event-aside-info event-aside-email">devmoreno2003@gmail.com</p>
+                <p class="event-aside-info event-aside-email"><?php echo $event['contact_email'] ?></p>
                 <hr>
 
                 <h3 class="event-aside-title">Telefone de contato</h3>
-                <p class="event-aside-info event-aside-tel">(32) 00000-0000</p>
+                <p class="event-aside-info event-aside-tel"><?php echo $event['contact_tel'] ?></p>
 
                 <hr>
                 <a href="./registerEventAdmin.html" class="redirect-button">Adicionar administradores</a>

@@ -66,7 +66,7 @@
         <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
-            <a href="../eventFeedPage.html" class="header-links">Eventos</a>
+            <a href="../eventFeedPage.php" class="header-links">Eventos</a>
             <a href="../aboutPage.html" class="header-links">Sobre</a>
             <a href="../contactPage.html" class="header-links">Contato</a>
             <a href="../connect/registerPage.php" id="connect-redirect">Não possui uma conta?</a>
@@ -87,7 +87,7 @@
                         <input type="text" name="edit-user" id="edit-user" class="edit-input" value="<?php echo $user['user']; ?>" required>
 
                         <label for="edit-image">Foto de Perfil</label>
-                        <input type="file" name="edit-image" id="edit-image" class="edit-input" accept="image/x-png,image/jpeg" required>
+                        <input type="file" name="edit-image" id="edit-image" class="edit-input" accept="image/x-png,image/jpeg">
 
                         <input type="submit" value="Salvar Alterações">
                         <a href="./profilePage.php" class="cancel-edit">Cancelar Alterações</a>

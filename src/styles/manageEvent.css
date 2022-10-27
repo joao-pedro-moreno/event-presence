@@ -32,7 +32,7 @@ main {
 
 aside {
     width: 25%;
-    max-height: 1050px;
+    /* max-height: 1050px; */
     background-color: var(--input-background-color);
     padding: 20px;
     border-radius: var(--border-radius);
