@@ -37,14 +37,14 @@
             <a href="../eventFeedPage.php" class="header-links">Eventos</a>
             <a href="../aboutPage.html" class="header-links">Sobre</a>
             <a href="../contactPage.html" class="header-links">Contato</a>
-            <a href="../connect/registerPage.php" id="connect-redirect">Não possui uma conta?</a>
+            <a href="../connect/loginPage.php" id="connect-redirect">Já possui uma conta?</a>
         </nav>
     </header>
 
     <main>
         <div class="profile-content">
             <aside>
-                <img src="<?php echo $user['path']; ?>" alt="" class="profile-image">
+                <img src="../../../assets/uploads/<?php echo $user['path']; ?>" alt="" class="profile-image">
                 <div class="profile-info">
                     <h2 class="user-name"><?php echo $user['name']; ?></h2>
                     <p class="user-info" id="user-username"><?php echo $user['user']; ?></p>

@@ -3,8 +3,9 @@
     include('../../../php/protect.php');
 
     if (isset($_POST['event-name']) || isset($_POST['event-desc']) || isset($_POST['event-ticket']) || isset($_POST['event-attraction']) || isset($_POST['event-address']) || isset($_POST['event-date']) || isset($_POST['event-hour-start']) || isset($_POST['event-hour-end']) || isset($_FILES['event-banner']) || isset($_POST['event-capacity']) || isset($_POST['event-age']) || isset($_POST['event-rules']) || isset($_POST['event-email']) || isset($_POST['event-tel'])) {
-        if (strlen($_POST['event-name']) || strlen($_POST['event-desc']) || strlen($_POST['event-ticket']) || strlen($_POST['event-attraction']) || strlen($_POST['event-address']) || strlen($_POST['event-date']) || strlen($_POST['event-hour-start']) || strlen($_POST['event-hour-end']) || strlen($_POST['event-capacity']) || strlen($_POST['event-age']) || strlen($_POST['event-rules']) || strlen($_POST['event-email']) || strlen($_POST['event-tel'])) {
-
+        if (strlen($_POST['event-name']) == 0 || strlen($_POST['event-desc']) == 0 || strlen($_POST['event-ticket']) == 0 || strlen($_POST['event-attraction']) == 0 || strlen($_POST['event-address']) == 0 || strlen($_POST['event-date']) == 0 || strlen($_POST['event-hour-start']) == 0 || strlen($_POST['event-hour-end']) == 0 || strlen($_POST['event-capacity']) == 0 || strlen($_POST['event-age']) == 0 || strlen($_POST['event-rules']) == 0 || strlen($_POST['event-email']) == 0 || strlen($_POST['event-tel']) == 0) {
+            echo "Favor inserir valores válidos";
+        } else {
             $event_banner = $_FILES['event-banner'];
 
             if ($event_banner['error']) {
@@ -42,6 +43,15 @@
             $sql_code = "INSERT INTO `events`(`owner_email`, `name`, `description`, `ticket`, `attractions`, `address`, `date`, `hour_start`, `hour_end`,`capacity`, `age`, `rules`, `contact_email`, `contact_tel`, `banner`) VALUES ('$owner_email','$event_name','$event_desc', '$event_ticket','$event_attraction','$event_address','$event_date','$event_hour_start','$event_hour_end','$event_capacity','$event_age','$event_rules','$event_email','$event_tel', '$file_path')";
             $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
 
+            $sql_get_event_id_code = "SELECT `id` FROM `events` WHERE owner_email = '$owner_email' AND `name` = '$event_name'";
+            $sql_get_event_id_query = $mysqli->query($sql_get_event_id_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+
+            $event_array = $sql_get_event_id_query->fetch_assoc();
+            $event_id = $event_array['id'];
+
+            $sql_admin_code = "INSERT INTO `admins`(`event_id`, `email`) VALUES ('$event_id','$owner_email')";
+            $sql_admin_query = $mysqli->query($sql_admin_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
+
             header("Location: ../profilePage.php");
         }
     }
@@ -72,7 +82,7 @@
             <a href="../../eventFeedPage.php" class="header-links">Eventos</a>
             <a href="../../aboutPage.html" class="header-links">Sobre</a>
             <a href="../../contactPage.html" class="header-links">Contato</a>
-            <a href="../../connect/registerPage.php" id="connect-redirect">Não possui uma conta?</a>
+            <a href="../../connect/loginPage.php" id="connect-redirect">Já possui uma conta?</a>
         </nav>
     </header>
 

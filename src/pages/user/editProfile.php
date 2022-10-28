@@ -6,7 +6,19 @@
         $file = $_FILES['edit-image'];
 
         if ($file['error']) {
-            die("Falha ao enviar arquivo!");
+            $user = $_SESSION['user'];
+
+            $user_email = $user['email'];
+            $user_name = $mysqli->real_escape_string($_POST['edit-name']);
+            $user_username = $mysqli->real_escape_string($_POST['edit-user']);
+
+            $sql_code = "UPDATE `users` SET `user`='$user_username',`name`='$user_name' WHERE `email` = '$user_email'";
+            $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+
+            $_SESSION['user']['name'] = $user_name;
+            $_SESSION['user']['user'] = $user_username;
+
+            header("Location: profilePage.php");
         }
 
         $dir = "../../../assets/uploads/";
@@ -18,7 +30,7 @@
         }
 
         $right_extension = move_uploaded_file($file['tmp_name'], $dir . $new_file_name . "." . $extension);
-        $file_path = $dir . $new_file_name . "." . $extension;
+        $file_path = $new_file_name . "." . $extension;
 
         if ($right_extension) {
 
@@ -34,6 +46,8 @@
             $_SESSION['user']['name'] = $user_name;
             $_SESSION['user']['user'] = $user_username;
             $_SESSION['user']['path'] = $file_path;
+
+            header("Location: profilePage.php");
 
         } else {
             echo "Falha ao enviar arquivo!";
@@ -69,7 +83,7 @@
             <a href="../eventFeedPage.php" class="header-links">Eventos</a>
             <a href="../aboutPage.html" class="header-links">Sobre</a>
             <a href="../contactPage.html" class="header-links">Contato</a>
-            <a href="../connect/registerPage.php" id="connect-redirect">Não possui uma conta?</a>
+            <a href="../connect/loginPage.php" id="connect-redirect">Já possui uma conta?</a>
         </nav>
     </header>
 

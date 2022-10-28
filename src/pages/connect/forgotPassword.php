@@ -42,7 +42,7 @@
             <a href="../eventFeedPage.php" class="header-links">Eventos</a>
             <a href="../aboutPage.html" class="header-links">Sobre</a>
             <a href="../contactPage.html" class="header-links">Contato</a>
-            <a href="./registerPage.php" id="connect-redirect">Não possui uma conta?</a>
+            <a href="./loginPage.php" id="connect-redirect">Já possui uma conta?</a>
         </nav>
     </header>
 

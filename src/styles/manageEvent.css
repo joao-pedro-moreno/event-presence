@@ -117,11 +117,13 @@ section {
 
 .table-info {
     color: var(--main-color);
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 400;
+    padding: 10px;
+    border: 1px solid var(--paragraph-color);
 }
 
-th {
+td {
     color: var(--paragraph-color);
     padding: 10px;
     border: 1px solid var(--paragraph-color);
@@ -184,7 +186,7 @@ th {
         margin: auto;
     }
 
-    th {
+    td {
         white-space: nowrap;
     }
 }
@@ -233,7 +235,7 @@ th {
         margin: 20px 0;
     }
 
-    th {
+    td {
         white-space: nowrap;
     }
 }
@@ -282,7 +284,7 @@ th {
         margin: 20px 0;
     }
 
-    th {
+    td {
         white-space: nowrap;
     }
 }
