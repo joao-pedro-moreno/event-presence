@@ -61,7 +61,7 @@ input[type="submit"]:hover {
     background-color: var(--main-color-hover);
 }
 
-.cancel-event {
+.cancel-event, .cancel-edit, .cancel-admin {
     width: 100%;
     padding: 10px;
     border: 2px solid var(--error-color);
@@ -78,29 +78,7 @@ input[type="submit"]:hover {
     transition: all 0.3s ease;
 }
 
-.cancel-event:hover {
-    background-color: var(--error-color);
-    color: var(--paragraph-color);
-}
-
-.cancel-admin {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid var(--error-color);
-    outline: none;
-    border-radius: var(--border-radius);
-    text-transform: uppercase;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 600;
-    color: var(--error-color);
-    background-color: transparent;
-    cursor: pointer;
-    box-shadow: 0 10px 10px -12px var(--shadow-color);
-    transition: all 0.3s ease;
-}
-
-.cancel-admin:hover {
+.cancel-event:hover, .cancel-edit:hover, .cancel-admin:hover {
     background-color: var(--error-color);
     color: var(--paragraph-color);
 }

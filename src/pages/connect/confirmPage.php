@@ -44,6 +44,9 @@
     <!-- Importação Favicon -->
     <link rel="shortcut icon" href="../../../assets/favicon.ico" type="image/x-icon">
 
+    <!-- Importação lib de ícones -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <title>Confirme sua presença</title>
 </head>
 <body>
@@ -59,6 +62,8 @@
     </header>
 
     <main>
+        <a href="../eventInfoPage.php?e=<?php echo $event_id; ?>" class="back-button"><i class='bx bx-chevron-left'></i> Voltar</a>
+
         <div class="event-content">
             <aside>
                 <h2 class="event-name"><?php echo $event['name']; ?></h2>
@@ -114,7 +119,7 @@
                     <input type="text" name="confirm-cpf" id="confirm-cpf" class="confirm-input" required>
 
                     <input type="submit" value="Confirmar Presença" class="submit-button">
-                    <a href="../eventFeedPage.php" class="cancel-confirm">Cancelar</a>
+                    <a href="../eventInfoPage.php?e=<?php echo $event_id; ?>" class="cancel-confirm">Cancelar</a>
                 </fieldset>
             </form>
         </div>

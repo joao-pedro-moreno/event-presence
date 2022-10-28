@@ -155,7 +155,7 @@
                 <input type="tel" name="event-tel" id="event-tel" class="create-event-input" value="<?php echo $event_info['contact_tel']; ?>" required>
 
                 <input type="submit" value="Salvar alterações">
-                <a href="./profilePage.php" class="cancel-edit">Cancelar Alterações</a>
+                <a href="./manageEventPage.php?e=<?php echo $event_id; ?>" class="cancel-edit">Cancelar Alterações</a>
             </fieldset>
         </form>
     </main>

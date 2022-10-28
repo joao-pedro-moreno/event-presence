@@ -32,6 +32,9 @@
     <!-- Importação Favicon -->
     <link rel="shortcut icon" href="../../../assets/favicon.ico" type="image/x-icon">
 
+    <!-- Importação lib de ícones -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <title>Recuperação de Senha</title>
 </head>
 <body>
@@ -55,6 +58,7 @@
                 <input type="email" name="recovery-email" id="recovery-email" class="connect-input" required>
 
                 <input type="submit" value="Recuperar" class="submit-button">
+                <a href="./loginPage.php" class="cancel-confirm">Cancelar</a>
             </fieldset>
         </form>
     </main>

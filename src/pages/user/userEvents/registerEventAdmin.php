@@ -68,7 +68,7 @@
                 <input type="email" name="admin-email" id="admin-email" class="register-admin-input">
 
                 <input type="submit" value="Adicionar Administrador" class="submit-button">
-                <a href="./manageEventPage.php" class="cancel-admin">Cancelar Alterações</a>
+                <a href="./manageEventPage.php?e=<?php echo $event_id; ?>" class="cancel-admin">Cancelar Alterações</a>
             </fieldset>
         </form>
     </main>

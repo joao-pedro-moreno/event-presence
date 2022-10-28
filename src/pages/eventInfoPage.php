@@ -28,6 +28,11 @@
     <!-- Importação Favicon -->
     <link rel="shortcut icon" href="../../assets/favicon.ico" type="image/x-icon">
 
+    :<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Importação biblioteca de ícones -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <title>Informações do evento</title>
 </head>
 <body>
@@ -43,8 +48,8 @@
     </header>
 
     <main>
+        <a href="./eventFeedPage.php" class="back-button"><i class='bx bx-chevron-left'></i> Voltar</a>
         <img src="../../assets/uploads/<?php echo $event['banner']; ?>" alt="Banner do evento" class="event-banner">
-
         <div class="event-content">
             <section>
                 <h2 class="event-name"><?php echo $event['name']; ?></h2>
@@ -66,17 +71,6 @@
                 </ul>
                 <h3 class="event-info-title">Regras</h3>
                 <p class="event-info event-rules"><?php echo $event['rules']; ?></p>
-
-                <!-- <div class="slider">
-                    <img src="../../assets/uploads/eventPhoto.jpg" alt="" class="slider-image">
-                    <img src="../../assets/uploads/eventPhoto2.jpg" alt="" class="slider-image">
-                    <img src="../../assets/uploads/eventPhoto.jpg" alt="" class="slider-image">
-                    <img src="../../assets/uploads/eventPhoto2.jpg" alt="" class="slider-image">                    
-                    <img src="../../assets/uploads/eventPhoto.jpg" alt="" class="slider-image">
-                    <img src="../../assets/uploads/eventPhoto2.jpg" alt="" class="slider-image">                    
-                    <img src="../../assets/uploads/eventPhoto.jpg" alt="" class="slider-image">
-                    <img src="../../assets/uploads/eventPhoto2.jpg" alt="" class="slider-image">
-                </div> -->
 
                 <a href="./connect/confirmPage.php?e=<?php echo $event_id; ?>" class="redirect-confirm-page">Confirmar Presença</a>
             </section>

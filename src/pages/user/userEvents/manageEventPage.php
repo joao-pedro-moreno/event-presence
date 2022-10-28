@@ -27,6 +27,23 @@
             $sql_admins_code = "SELECT `user`, `email`, `name`, `path` FROM `users` WHERE email = '$admin_email'";
             $sql_admins_query = $mysqli->query($sql_admins_code) or die("Falha ao executar código SQL: " . $mysqli->error);
         } 
+
+        if (isset($_POST['delete-event-name'])) {
+            if (strlen($_POST['delete-event-name']) == 0) {
+                echo "Favor inserir um valor válido";
+            } else {
+                $name = $mysqli->real_escape_string($_POST['delete-event-name']);
+
+                if ($name === $event['name']) {
+                    $sql_code = "DELETE FROM `events` WHERE id = $event_id";
+                    $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+                    
+                    header("Location: ../profilePage.php");
+                } else {
+                    echo "Nome incorreto!";
+                }
+            }
+        }
         
     } else {
         header("Location: ../../../../index.html");
@@ -49,6 +66,9 @@
     <!-- Importação Favicon -->
     <link rel="shortcut icon" href="../../../../assets/favicon.ico" type="image/x-icon">
 
+    <!-- Importação lib de ícones -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
     <title>Gerencie seu evento</title>
 </head>
 
@@ -65,6 +85,8 @@
     </header>
 
     <main>
+        <a href="../profilePage.php" class="back-button"><i class='bx bx-chevron-left'></i> Voltar</a>
+
         <div class="event-content">
         <aside>
                 <h2 class="event-name"><?php echo $event['name'] ?></h2>
@@ -105,7 +127,22 @@
                 <hr>
                 <a href="./registerEventAdmin.php?e=<?php echo $event_id; ?>" class="redirect-button">Adicionar administradores</a>
                 <a href="./editEvent.php?e=<?php echo $event_id; ?>" class="redirect-button">Editar evento</a>
+                <button class="delete-event">Deletar evento</button>
             </aside>
+
+            <section class="delete-modal">
+                <form action="#" method="POST">
+                    <fieldset class="modal-info">
+                        <h3 class="modal-title">Deseja mesmo deletar o evento?</h3>
+
+                        <p class="modal-paragraph">Esta ação é irreversível. Para deletar o evento digite o nome do evento abaixo <i><?php echo $event['name']; ?></i></p>
+                        <input type="text" name="delete-event-name" id="delete-event-name" class="modal-input">
+
+                        <button type="button" class="cancel-delete">Cancelar</button>
+                        <input type="submit" value="Deletar evento" class="delete-event-modal">
+                    </fieldset>
+                </form>
+            </section>
 
             <section>
                 <h2 class="manage-event-title">Administradores</h2>
@@ -119,7 +156,7 @@
                     ?>
                 </div>
 
-                <h2 class="manage-event-title">Pessoas Confirmadas</h2>
+                <h2 class="manage-event-title"><?php echo $sql_confirmed_query->num_rows; ?> Pessoas Confirmadas</h2>
 
                 <div class="table">
                     <table id="tableExport">
@@ -159,6 +196,8 @@
 
     <script>
         $(document).ready(function () {
+            $(".delete-modal").hide();
+
             $("#exportTable").click(function () {
                 $("#tableExport").btechco_excelexport({
                     containerid: "tableExport",
@@ -166,6 +205,13 @@
                     filename: 'confirmedNames'
                 });
             });
+
+            $(".delete-event").click(function () {
+                $(".delete-modal").show();
+                $(".cancel-delete").click(function () {
+                    $(".delete-modal").hide();
+                })
+            })
         });
     </script>
 </body >

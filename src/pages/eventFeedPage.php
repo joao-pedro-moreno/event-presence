@@ -14,8 +14,8 @@
 
     <!-- Importação de estilos -->
     <link rel="stylesheet" href="../styles/config.css">
-    <link rel="stylesheet" href="../styles/components/header.css">
     <link rel="stylesheet" href="../styles/eventFeed.css">
+    <link rel="stylesheet" href="../styles/components/header.css">
 
     <!-- Importação Favicon -->
     <link rel="shortcut icon" href="../../assets/favicon.ico" type="image/x-icon">
@@ -53,57 +53,6 @@
         <?php 
             }
         ?>
-        
-        <!-- <article>
-            <img src="../../assets/uploads/eventBanner.jpg" alt="Banner do evento" class="card-image">
-
-            <h3 class="card-name">Nome do evento</h3>
-            <p class="card-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime magni officiis est voluptates quis labore cupiditate sed optio consequuntur commodi ipsam voluptas repellat, incidunt modi eos, nesciunt quam eligendi? Maiores!</p>
-            <span class="card-date">15/10</span>
-            <span class="card-hour">20:00</span>
-            <a href="./eventInfoPage.html" class="card-info-button">Mais informações</a>
-        </article>
-
-        <article>
-            <img src="../../assets/uploads/eventBanner.jpg" alt="Banner do evento" class="card-image">
-
-            <h3 class="card-name">Nome do evento</h3>
-            <p class="card-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime magni officiis est voluptates quis labore cupiditate sed optio consequuntur commodi ipsam voluptas repellat, incidunt modi eos, nesciunt quam eligendi? Maiores!</p>
-            <span class="card-date">15/10</span>
-            <span class="card-hour">20:00</span>
-            <a href="./eventInfoPage.html" class="card-info-button">Mais informações</a>
-        </article>
-
-        <article>
-            <img src="../../assets/uploads/eventBanner.jpg" alt="Banner do evento" class="card-image">
-
-            <h3 class="card-name">Nome do evento</h3>
-            <p class="card-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime magni officiis est voluptates quis labore cupiditate sed optio consequuntur commodi ipsam voluptas repellat, incidunt modi eos, nesciunt quam eligendi? Maiores!</p>
-            <span class="card-date">15/10</span>
-            <span class="card-hour">20:00</span>
-            <a href="./eventInfoPage.html" class="card-info-button">Mais informações</a>
-        </article>
-
-        <article>
-            <img src="../../assets/uploads/eventBanner.jpg" alt="Banner do evento" class="card-image">
-
-            <h3 class="card-name">Nome do evento</h3>
-            <p class="card-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime magni officiis est voluptates quis labore cupiditate sed optio consequuntur commodi ipsam voluptas repellat, incidunt modi eos, nesciunt quam eligendi? Maiores!</p>
-            <span class="card-date">15/10</span>
-            <span class="card-hour">20:00</span>
-            <a href="./eventInfoPage.html" class="card-info-button">Mais informações</a>
-        </article>
-
-        <article>
-            <img src="../../assets/uploads/eventBanner.jpg" alt="Banner do evento" class="card-image">
-
-            <h3 class="card-name">Nome do evento</h3>
-            <p class="card-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime magni officiis est voluptates quis labore cupiditate sed optio consequuntur commodi ipsam voluptas repellat, incidunt modi eos, nesciunt quam eligendi? Maiores!</p>
-            <span class="card-date">15/10</span>
-            <span class="card-hour">20:00</span>
-            <a href="./eventInfoPage.html" class="card-info-button">Mais informações</a>
-        </article> -->
-
     </main>
 </body>
 </html>

@@ -10,6 +10,21 @@ main {
     padding: 30px;
 }
 
+.back-button {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    color: var(--paragraph-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    color: var(--main-color);
+}
+
 .event-banner {
     width: 100%;
     border-radius: var(--image-border-radius);

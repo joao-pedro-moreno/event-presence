@@ -81,23 +81,6 @@
                     <?php
                         }
                     ?>
-
-
-                    <!-- <article>
-                        <img src="../../../assets/uploads/eventBanner.jpg" alt="Banner do evento" class="event-banner">
-
-                        <h3 class="event-name">Nome do Evento</h3>
-
-                        <a href="./userEvents/manageEventPage.html" class="manage-event-button">Gerenciar evento</a>
-                    </article>
-
-                    <article>
-                        <img src="../../../assets/uploads/eventBanner.jpg" alt="Banner do evento" class="event-banner">
-
-                        <h3 class="event-name">Nome do Evento</h3>
-
-                        <a href="./userEvents/manageEventPage.html" class="manage-event-button">Gerenciar evento</a>
-                    </article> -->
                 </div>
             </section>
         </div>
