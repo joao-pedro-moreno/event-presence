@@ -1,5 +1,12 @@
 <?php
+    session_start();
+
+    if ($_SESSION['user']) {
+        header("Location: ../user/profilePage.php");
+    }
+
     include('../../php/connection.php');
+
 
     if (isset($_POST['login-email']) || isset($_POST['login-password'])) {
         if (strlen($_POST['login-email']) == 0 || strlen($_POST['login-password']) == 0) {

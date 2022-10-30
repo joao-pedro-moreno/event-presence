@@ -18,10 +18,18 @@
                 $tel = $mysqli->real_escape_string($_POST['confirm-tel']);
                 $cpf = $mysqli->real_escape_string($_POST['confirm-cpf']);
 
-                $sql_confirmed_code = "INSERT INTO `confirmed`(`event_id`, `name`, `email`, `tel`, `cpf`) VALUES ('$event_id','$name', '$email','$tel','$cpf')";
-                $sql_confirmed_query = $mysqli->query($sql_confirmed_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
+                $sql_confirmed_verification_code = "SELECT `event_id`, `cpf` FROM `confirmed` WHERE event_id = $event_id AND cpf = '$cpf'";
+                $sql_confirmed_verification_query = $mysqli->query($sql_confirmed_verification_code) or die("Falha ao executar código SQL: " . $mysqli->error);
 
-                header("Location: ../eventFeedPage.php");
+                if ($sql_confirmed_verification_query->num_rows > 0) {
+                    echo "Esta pessoa já está confirmada";
+                } else {
+                    $sql_confirmed_code = "INSERT INTO `confirmed`(`event_id`, `name`, `email`, `tel`, `cpf`) VALUES ('$event_id','$name', '$email','$tel','$cpf')";
+                    $sql_confirmed_query = $mysqli->query($sql_confirmed_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
+    
+                    header("Location: ../eventFeedPage.php");
+                }
+
             }
         }
     } else {

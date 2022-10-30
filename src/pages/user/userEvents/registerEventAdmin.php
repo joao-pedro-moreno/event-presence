@@ -1,30 +1,42 @@
 <?php
+    session_start();
+
     include('../../../php/connection.php');
     include('../../../php/protect.php');
 
     if (isset($_GET['e'])) {
         $event_id = $_GET['e'];
 
-        if (isset($_POST['admin-email'])) {
-            if (strlen($_POST['admin-email']) == 0) {
-                echo "Insira um valor válido";
-            } else {
-                $email = $mysqli->real_escape_string($_POST['admin-email']);
+        $user = $_SESSION['user'];
+        $owner_email = $user['email'];
 
-                $sql_admin_verification_code = "SELECT `event_id`, `email` FROM `admins` WHERE event_id = $event_id AND email = '$email'";
-                $sql_admin_verification_query = $mysqli->query($sql_admin_verification_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+        $sql_owner_verification_code = "SELECT `id`, `owner_email` FROM `events` WHERE id = $event_id AND owner_email = '$owner_email'";
+        $sql_owner_verification_query = $mysqli->query($sql_owner_verification_code) or die("Falha ao executar código SQL: " . $mysqli->error);
 
-                if ($sql_admin_verification_query->num_rows > 0) {
-                    echo "Admin já registrado";
+        if ($sql_owner_verification_query->num_rows > 0) {
+            if (isset($_POST['admin-email'])) {
+                if (strlen($_POST['admin-email']) == 0) {
+                    echo "Insira um valor válido";
                 } else {
-                    $sql_code = "INSERT INTO `admins`(`event_id`, `email`) VALUES ('$event_id','$email')";
-                    $sql_query = $mysqli->query($sql_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
-
-                    header("Location: manageEventPage.php?e=$event_id");
+                    $email = $mysqli->real_escape_string($_POST['admin-email']);
+    
+                    $sql_admin_verification_code = "SELECT `event_id`, `email` FROM `admins` WHERE event_id = $event_id AND email = '$email'";
+                    $sql_admin_verification_query = $mysqli->query($sql_admin_verification_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+    
+                    if ($sql_admin_verification_query->num_rows > 0) {
+                        // echo "Admin já registrado";
+                        $_SESSION['notify'] = "Admin já registrado";
+                    } else {
+                        $sql_code = "INSERT INTO `admins`(`event_id`, `email`) VALUES ('$event_id','$email')";
+                        $sql_query = $mysqli->query($sql_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
+    
+                        header("Location: manageEventPage.php?e=$event_id");
+                    }
                 }
             }
+        } else {
+            header("Location: manageEventPage.php?e=$event_id");
         }
-
     } else {
         header("Location: ../../../../index.html");
     }
@@ -72,5 +84,11 @@
             </fieldset>
         </form>
     </main>
+
+    <script>
+        if (<?php echo isset($_SESSION['notify']); ?>) {
+            alert("<?php echo $_SESSION['notify']; unset($_SESSION['notify']); ?>");
+        }
+    </script>
 </body>
 </html>

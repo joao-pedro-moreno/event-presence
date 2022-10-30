@@ -4,20 +4,62 @@
 
     if (isset($_GET['e'])) {
         $event_id = $_GET['e'];
-        $sql_code = "SELECT * FROM `events` WHERE id = '$event_id'";
-        $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
 
-        $event_info = $sql_query->fetch_assoc();
+        $user = $_SESSION['user'];
+        $owner_email = $user['email'];
 
-        if (isset($_POST['event-name']) || isset($_POST['event-desc']) || isset($_POST['event-ticket']) || isset($_POST['event-attraction']) || isset($_POST['event-address']) || isset($_POST['event-date']) || isset($_POST['event-hour-start']) || isset($_POST['event-hour-end']) || isset($_FILES['event-banner']) || isset($_POST['event-capacity']) || isset($_POST['event-age']) || isset($_POST['event-rules']) || isset($_POST['event-email']) || isset($_POST['event-tel'])) {
-            if (strlen($_POST['event-name']) == 0 || strlen($_POST['event-desc']) == 0 || strlen($_POST['event-ticket']) == 0 || strlen($_POST['event-attraction']) == 0 || strlen($_POST['event-address']) == 0 || strlen($_POST['event-date']) == 0 || strlen($_POST['event-hour-start']) == 0 || strlen($_POST['event-hour-end']) == 0 || strlen($_POST['event-capacity']) == 0 || strlen($_POST['event-age']) == 0 || strlen($_POST['event-rules']) == 0 || strlen($_POST['event-email']) == 0 || strlen($_POST['event-tel']) == 0) {
-                echo "Favor inserir valores válidos";
-            } else {
-                $event_banner = $_FILES['event-banner'];
+        $sql_owner_verification_code = "SELECT `id`, `owner_email` FROM `events` WHERE id = $event_id AND owner_email = '$owner_email'";
+        $sql_owner_verification_query = $mysqli->query($sql_owner_verification_code) or die("Falha ao executar código SQL: " . $mysqli->error);
 
-                if ($event_banner['error']) {
+        if ($sql_owner_verification_query->num_rows > 0) {
+            $sql_code = "SELECT * FROM `events` WHERE id = '$event_id'";
+            $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+    
+            $event_info = $sql_query->fetch_assoc();
+    
+            if (isset($_POST['event-name']) || isset($_POST['event-desc']) || isset($_POST['event-ticket']) || isset($_POST['event-attraction']) || isset($_POST['event-address']) || isset($_POST['event-date']) || isset($_POST['event-hour-start']) || isset($_POST['event-hour-end']) || isset($_FILES['event-banner']) || isset($_POST['event-capacity']) || isset($_POST['event-age']) || isset($_POST['event-rules']) || isset($_POST['event-email']) || isset($_POST['event-tel'])) {
+                if (strlen($_POST['event-name']) == 0 || strlen($_POST['event-desc']) == 0 || strlen($_POST['event-ticket']) == 0 || strlen($_POST['event-attraction']) == 0 || strlen($_POST['event-address']) == 0 || strlen($_POST['event-date']) == 0 || strlen($_POST['event-hour-start']) == 0 || strlen($_POST['event-hour-end']) == 0 || strlen($_POST['event-capacity']) == 0 || strlen($_POST['event-age']) == 0 || strlen($_POST['event-rules']) == 0 || strlen($_POST['event-email']) == 0 || strlen($_POST['event-tel']) == 0) {
+                    echo "Favor inserir valores válidos";
+                } else {
+                    $event_banner = $_FILES['event-banner'];
+    
+                    if ($event_banner['error']) {
+                        $user = $_SESSION['user'];
+                    
+                        $owner_email = $user['email'];
+                        $event_name = $mysqli->real_escape_string($_POST['event-name']);
+                        $event_desc = $mysqli->real_escape_string($_POST['event-desc']);
+                        $event_ticket = $mysqli->real_escape_string($_POST['event-ticket']);
+                        $event_attraction = $mysqli->real_escape_string($_POST['event-attraction']);
+                        $event_address = $mysqli->real_escape_string($_POST['event-address']);
+                        $event_date = $mysqli->real_escape_string($_POST['event-date']);
+                        $event_hour_start = $mysqli->real_escape_string($_POST['event-hour-start']);
+                        $event_hour_end = $mysqli->real_escape_string($_POST['event-hour-end']);
+                        $event_capacity = $mysqli->real_escape_string($_POST['event-capacity']);
+                        $event_age = $mysqli->real_escape_string($_POST['event-age']);
+                        $event_rules = $mysqli->real_escape_string($_POST['event-rules']);
+                        $event_email = $mysqli->real_escape_string($_POST['event-email']);
+                        $event_tel = $mysqli->real_escape_string($_POST['event-tel']);
+        
+                        $sql_code = "UPDATE `events` SET `owner_email`='$owner_email',`name`='$event_name',`description`='$event_desc',`ticket`='$event_ticket',`attractions`='$event_attraction',`address`='$event_address',`date`='$event_date',`hour_start`='$event_hour_start',`hour_end`='$event_hour_end',`capacity`='$event_capacity',`age`='$event_age',`rules`='$event_rules',`contact_email`='$event_email',`contact_tel`='$event_tel' WHERE id = '$event_id'";
+                        $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+        
+                        header("Location: ../profilePage.php");
+                    }
+    
+                    $dir = "../../../../assets/uploads/";
+                    $new_file_name = uniqid();
+                    $extension = strtolower(pathinfo($event_banner['name'], PATHINFO_EXTENSION));
+    
+                    if ($extension != "jpg" && $extension != "png" && $extension != "jpeg") {
+                        die("Tipo de arquivo não aceito");
+                    }
+    
+                    $right_extension = move_uploaded_file($event_banner['tmp_name'], $dir . $new_file_name . "." . $extension);
+                    $file_path = $new_file_name . "." . $extension;
+    
                     $user = $_SESSION['user'];
-                
+                    
                     $owner_email = $user['email'];
                     $event_name = $mysqli->real_escape_string($_POST['event-name']);
                     $event_desc = $mysqli->real_escape_string($_POST['event-desc']);
@@ -33,46 +75,16 @@
                     $event_email = $mysqli->real_escape_string($_POST['event-email']);
                     $event_tel = $mysqli->real_escape_string($_POST['event-tel']);
     
-                    $sql_code = "UPDATE `events` SET `owner_email`='$owner_email',`name`='$event_name',`description`='$event_desc',`ticket`='$event_ticket',`attractions`='$event_attraction',`address`='$event_address',`date`='$event_date',`hour_start`='$event_hour_start',`hour_end`='$event_hour_end',`capacity`='$event_capacity',`age`='$event_age',`rules`='$event_rules',`contact_email`='$event_email',`contact_tel`='$event_tel' WHERE id = '$event_id'";
+                    $sql_code = "UPDATE `events` SET `owner_email`='$owner_email',`name`='$event_name',`description`='$event_desc',`ticket`='$event_ticket',`attractions`='$event_attraction',`address`='$event_address',`date`='$event_date',`hour_start`='$event_hour_start',`hour_end`='$event_hour_end',`banner`='$file_path',`capacity`='$event_capacity',`age`='$event_age',`rules`='$event_rules',`contact_email`='$event_email',`contact_tel`='$event_tel' WHERE id = '$event_id'";
                     $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
     
                     header("Location: ../profilePage.php");
                 }
-
-                $dir = "../../../../assets/uploads/";
-                $new_file_name = uniqid();
-                $extension = strtolower(pathinfo($event_banner['name'], PATHINFO_EXTENSION));
-
-                if ($extension != "jpg" && $extension != "png" && $extension != "jpeg") {
-                    die("Tipo de arquivo não aceito");
-                }
-
-                $right_extension = move_uploaded_file($event_banner['tmp_name'], $dir . $new_file_name . "." . $extension);
-                $file_path = $new_file_name . "." . $extension;
-
-                $user = $_SESSION['user'];
-                
-                $owner_email = $user['email'];
-                $event_name = $mysqli->real_escape_string($_POST['event-name']);
-                $event_desc = $mysqli->real_escape_string($_POST['event-desc']);
-                $event_ticket = $mysqli->real_escape_string($_POST['event-ticket']);
-                $event_attraction = $mysqli->real_escape_string($_POST['event-attraction']);
-                $event_address = $mysqli->real_escape_string($_POST['event-address']);
-                $event_date = $mysqli->real_escape_string($_POST['event-date']);
-                $event_hour_start = $mysqli->real_escape_string($_POST['event-hour-start']);
-                $event_hour_end = $mysqli->real_escape_string($_POST['event-hour-end']);
-                $event_capacity = $mysqli->real_escape_string($_POST['event-capacity']);
-                $event_age = $mysqli->real_escape_string($_POST['event-age']);
-                $event_rules = $mysqli->real_escape_string($_POST['event-rules']);
-                $event_email = $mysqli->real_escape_string($_POST['event-email']);
-                $event_tel = $mysqli->real_escape_string($_POST['event-tel']);
-
-                $sql_code = "UPDATE `events` SET `owner_email`='$owner_email',`name`='$event_name',`description`='$event_desc',`ticket`='$event_ticket',`attractions`='$event_attraction',`address`='$event_address',`date`='$event_date',`hour_start`='$event_hour_start',`hour_end`='$event_hour_end',`banner`='$file_path',`capacity`='$event_capacity',`age`='$event_age',`rules`='$event_rules',`contact_email`='$event_email',`contact_tel`='$event_tel' WHERE id = '$event_id'";
-                $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
-
-                header("Location: ../profilePage.php");
             }
+        } else {
+            header("Location: ../profilePage.php");
         }
+
     } else {
         header("Location: ../../../../index.html");
     }

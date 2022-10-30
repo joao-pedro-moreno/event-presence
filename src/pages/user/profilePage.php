@@ -30,7 +30,7 @@
     <title>Perfil</title>
 </head>
 <body>
-    <header>
+    <!-- <header>
         <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
@@ -39,7 +39,9 @@
             <a href="../contactPage.html" class="header-links">Contato</a>
             <a href="../connect/loginPage.php" id="connect-redirect">Já possui uma conta?</a>
         </nav>
-    </header>
+    </header> -->
+
+    <?php require("../../php/header.php"); ?>
 
     <main>
         <div class="profile-content">

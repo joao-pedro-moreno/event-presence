@@ -1,25 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
-    <link rel="stylesheet" href="../styles/config.css">
-    <link rel="stylesheet" href="../styles/components/header.css">
+    $user = $_SESSION['user'];
+?>
 
-    <title>Document</title>
-</head>
-<body>
-    <header>
-        <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
+<header>
+    <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
 
-        <nav>
-            <a href="../eventFeedPage.php" class="header-links">Eventos</a>
-            <a href="../aboutPage.html" class="header-links">Sobre</a>
-            <a href="../contactPage.html" class="header-links">Contato</a>
+    <nav>
+        <a href="../eventFeedPage.php" class="header-links">Eventos</a>
+        <a href="../aboutPage.html" class="header-links">Sobre</a>
+        <a href="../contactPage.html" class="header-links">Contato</a>
+
+        <?php
+            if (!isset($user)) {
+        ?>
             <a href="./loginPage.php" id="connect-redirect">Já possui uma conta?</a>
-        </nav>
-    </header>
-</body>
-</html>
+        <?php        
+            } else {
+        ?>
+            <a href="./loginPage.php" id="profile-redirect"><img src="../../../assets/uploads/<?php echo $user['path']; ?>" alt=""></a>
+        <?php        
+            }
+        ?>
+        <!-- <a href="./loginPage.php" id="connect-redirect">Já possui uma conta?</a> -->
+    </nav>
+</header>

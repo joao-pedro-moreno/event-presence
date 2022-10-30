@@ -5,46 +5,64 @@
     if (isset($_GET['e'])) {
         $event_id = $_GET['e'];
 
-        // Pega as informações do evento
-        $sql_code = "SELECT `id`, `owner_email`, `name`, `ticket`, `address`, `date`, `hour_start`, `hour_end`, `banner`, `capacity`, `age`, `contact_email`, `contact_tel` FROM `events` WHERE id = '$event_id'";
-        $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+        $user = $_SESSION['user'];
+        $owner_email = $user['email'];
 
-        $event = $sql_query->fetch_assoc();
+        $sql_owner_verification_code = "SELECT `id`, `owner_email` FROM `events` WHERE id = $event_id AND owner_email = '$owner_email'";
+        $sql_owner_verification_query = $mysqli->query($sql_owner_verification_code) or die("Falha ao executar código SQL: " . $mysqli->error);
 
-        // Pega as informaçõe das pessoass confirmadas
-        $sql_confirmed_code = "SELECT * FROM `confirmed` WHERE event_id = '$event_id'";
-        $sql_confirmed_query = $mysqli->query($sql_confirmed_code) or die("Falha ao executar código SQL: " . $mysqli->error);
-
-        // Pega as informações dos admins do evento
-        $sql_get_admin_code = "SELECT `event_id`, `email` FROM `admins` WHERE event_id = $event_id";
-        $sql_get_admin_query = $mysqli->query($sql_get_admin_code) or die("Falha ao executar código SQL: " . $mysqli->error);
-
-        if ($sql_get_admin_query->num_rows > 0) {
-            $admins = $sql_get_admin_query->fetch_assoc();
-            $admin_email = $admins['email'];
+        if ($sql_owner_verification_query->num_rows > 0) {
+            // Pega as informações do evento
+            $sql_code = "SELECT `id`, `owner_email`, `name`, `ticket`, `address`, `date`, `hour_start`, `hour_end`, `banner`, `capacity`, `age`, `contact_email`, `contact_tel` FROM `events` WHERE id = '$event_id'";
+            $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
     
-            // Pega as informações do perfil dos admins
-            $sql_admins_code = "SELECT `user`, `email`, `name`, `path` FROM `users` WHERE email = '$admin_email'";
-            $sql_admins_query = $mysqli->query($sql_admins_code) or die("Falha ao executar código SQL: " . $mysqli->error);
-        } 
+            $event = $sql_query->fetch_assoc();
+    
+            // Pega as informaçõe das pessoass confirmadas
+            $sql_confirmed_code = "SELECT * FROM `confirmed` WHERE event_id = '$event_id'";
+            $sql_confirmed_query = $mysqli->query($sql_confirmed_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+    
+            // Pega as informações dos admins do evento
+            $sql_get_admin_code = "SELECT `email` FROM `admins` WHERE event_id = $event_id";
+            $sql_get_admin_query = $mysqli->query($sql_get_admin_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+            $admins_list = $sql_get_admin_query->fetch_array();
 
-        if (isset($_POST['delete-event-name'])) {
-            if (strlen($_POST['delete-event-name']) == 0) {
-                echo "Favor inserir um valor válido";
-            } else {
-                $name = $mysqli->real_escape_string($_POST['delete-event-name']);
+            $admins = array();
 
-                if ($name === $event['name']) {
-                    $sql_code = "DELETE FROM `events` WHERE id = $event_id";
-                    $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
-                    
-                    header("Location: ../profilePage.php");
+            foreach ($admins_list as $admin) {
+
+                // echo $admin;
+                // Pega as informações do perfil dos admins
+                $admin_email = $admin;
+
+                $sql_admins_code = "SELECT `email`, `name`, `path` FROM `users` WHERE email = '$admin_email'";
+                $sql_admins_query = $mysqli->query($sql_admins_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+
+                while ($get_admin = $sql_admins_query->fetch_assoc()) {
+                    array_push($admins, $get_admin);
+                };
+            };
+            
+    
+            if (isset($_POST['delete-event-name'])) {
+                if (strlen($_POST['delete-event-name']) == 0) {
+                    echo "Favor inserir um valor válido";
                 } else {
-                    echo "Nome incorreto!";
+                    $name = $mysqli->real_escape_string($_POST['delete-event-name']);
+    
+                    if ($name === $event['name']) {
+                        $sql_code = "DELETE FROM `events` WHERE id = $event_id";
+                        $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+                        
+                        header("Location: ../profilePage.php");
+                    } else {
+                        echo "Nome incorreto!";
+                    }
                 }
             }
-        }
-        
+        } else {
+            header("Location: ../profilePage.php");
+        }   
     } else {
         header("Location: ../../../../index.html");
     }
@@ -138,8 +156,8 @@
                         <p class="modal-paragraph">Esta ação é irreversível. Para deletar o evento digite o nome do evento abaixo <i><?php echo $event['name']; ?></i></p>
                         <input type="text" name="delete-event-name" id="delete-event-name" class="modal-input">
 
-                        <button type="button" class="cancel-delete">Cancelar</button>
                         <input type="submit" value="Deletar evento" class="delete-event-modal">
+                        <button type="button" class="cancel-delete">Cancelar</button>
                     </fieldset>
                 </form>
             </section>
@@ -148,9 +166,9 @@
                 <h2 class="manage-event-title">Administradores</h2>
                 <div class="event-admins">
                     <?php
-                        while ($data = $sql_admins_query->fetch_array()) {
+                        foreach ($admins as $admin) {
                     ?>
-                        <img src="../../../../assets/uploads/<?php echo $data['path']; ?>" alt="<?php echo $data['user']; ?>" class="admin-profile-image">
+                        <img src="../../../../assets/uploads/<?php echo $admin['path']; ?>" alt="" class="admin-profile-image">
                     <?php        
                         }
                     ?>
