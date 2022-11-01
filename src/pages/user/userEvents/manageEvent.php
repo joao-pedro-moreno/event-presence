@@ -54,14 +54,14 @@
                         $sql_code = "DELETE FROM `events` WHERE id = $event_id";
                         $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
                         
-                        header("Location: ../profilePage.php");
+                        header("Location: ../profile.php");
                     } else {
                         echo "Nome incorreto!";
                     }
                 }
             }
         } else {
-            header("Location: ../profilePage.php");
+            header("Location: ../profile.php");
         }   
     } else {
         header("Location: ../../../../index.html");
@@ -103,91 +103,72 @@
     </header>
 
     <main>
-        <a href="../profilePage.php" class="back-button"><i class='bx bx-chevron-left'></i> Voltar</a>
-
-        <div class="event-content">
-        <aside>
-                <h2 class="event-name"><?php echo $event['name'] ?></h2>
-
-                <img src="../../../../assets/uploads/<?php echo $event['banner'] ?>" alt="Banner do evento" class="event-banner">
-
-                <h3 class="event-aside-title">Valor do ingresso</h3>
-                <p class="event-aside-info event-aside-ticket"><?php echo $event['ticket'] ?></p>
-                <hr>
-
-                <h3 class="event-aside-title">Local</h3>
-                <p class="event-aside-info event-aside-address"><?php echo $event['address'] ?></p>
-                <hr>
-
-                <h3 class="event-aside-title">Data</h3>
-                <p class="event-aside-info event-aside-date"><?php echo $event['date'] ?></p>
-                <hr>
-
-                <h3 class="event-aside-title">Horário</h3>
-                <p class="event-aside-info event-aside-hour"><?php echo $event['hour_start'] ?></p>
-                <hr>
-
-                <h3 class="event-aside-title">Idade mínima</h3>
-                <p class="event-aside-info event-aside-age"><?php echo $event['age'] ?></p>
-                <hr>
-
-                <h3 class="event-aside-title">Capacidade máxima</h3>
-                <p class="event-aside-info event-aside-capacity"><?php echo $event['capacity'] ?></p>
-                <hr>
-
-                <h3 class="event-aside-title">Email de contato</h3>
-                <p class="event-aside-info event-aside-email"><?php echo $event['contact_email'] ?></p>
-                <hr>
-
-                <h3 class="event-aside-title">Telefone de contato</h3>
-                <p class="event-aside-info event-aside-tel"><?php echo $event['contact_tel'] ?></p>
-
-                <hr>
-                <a href="./registerEventAdmin.php?e=<?php echo $event_id; ?>" class="redirect-button">Adicionar administradores</a>
-                <a href="./editEvent.php?e=<?php echo $event_id; ?>" class="redirect-button">Editar evento</a>
-                <button class="delete-event">Deletar evento</button>
-            </aside>
-
-            <section class="delete-modal">
-                <form action="#" method="POST">
-                    <fieldset class="modal-info">
-                        <h3 class="modal-title">Deseja mesmo deletar o evento?</h3>
-
-                        <p class="modal-paragraph">Esta ação é irreversível. Para deletar o evento digite o nome do evento abaixo <i><?php echo $event['name']; ?></i></p>
-                        <input type="text" name="delete-event-name" id="delete-event-name" class="modal-input">
-
-                        <input type="submit" value="Deletar evento" class="delete-event-modal">
-                        <button type="button" class="cancel-delete">Cancelar</button>
-                    </fieldset>
-                </form>
-            </section>
-
-            <section>
-                <h2 class="manage-event-title">Administradores</h2>
-                <div class="event-admins">
-                    <?php
-                        foreach ($admins as $admin) {
-                    ?>
-                        <img src="../../../../assets/uploads/<?php echo $admin['path']; ?>" alt="" class="admin-profile-image">
-                    <?php        
-                        }
-                    ?>
-                </div>
-
-                <h2 class="manage-event-title"><?php echo $sql_confirmed_query->num_rows; ?> Pessoas Confirmadas</h2>
-
-                <div class="table">
-                    <table id="tableExport">
-                        <thead>
+        <section id="manage-event-page">
+            <a href="../profile.php" class="back-button"><i class='bx bx-chevron-left'></i> Voltar</a>
+            <div class="event-content">
+                <aside>
+                    <h2 class="event-name"><?php echo $event['name'] ?></h2>
+                    <img src="../../../../assets/uploads/<?php echo $event['banner'] ?>" alt="Banner do evento" class="event-aside-banner">
+                    <h3 class="event-aside-title">Valor do ingresso</h3>
+                    <p class="event-aside-info event-aside-ticket"><?php echo $event['ticket'] ?></p>
+                    <hr>
+                    <h3 class="event-aside-title">Local</h3>
+                    <p class="event-aside-info event-aside-address"><?php echo $event['address'] ?></p>
+                    <hr>
+                    <h3 class="event-aside-title">Data</h3>
+                    <p class="event-aside-info event-aside-date"><?php echo $event['date'] ?></p>
+                    <hr>
+                    <h3 class="event-aside-title">Horário</h3>
+                    <p class="event-aside-info event-aside-hour"><?php echo $event['hour_start'] ?></p>
+                    <hr>
+                    <h3 class="event-aside-title">Idade mínima</h3>
+                    <p class="event-aside-info event-aside-age"><?php echo $event['age'] ?></p>
+                    <hr>
+                    <h3 class="event-aside-title">Capacidade máxima</h3>
+                    <p class="event-aside-info event-aside-capacity"><?php echo $event['capacity'] ?></p>
+                    <hr>
+                    <h3 class="event-aside-title">Email de contato</h3>
+                    <p class="event-aside-info event-aside-email"><?php echo $event['contact_email'] ?></p>
+                    <hr>
+                    <h3 class="event-aside-title">Telefone de contato</h3>
+                    <p class="event-aside-info event-aside-tel"><?php echo $event['contact_tel'] ?></p>
+                    <hr>
+                    <a href="./registerEventAdmin.php?e=<?php echo $event_id; ?>" class="redirect-button">Adicionar administradores</a>
+                    <a href="./editEvent.php?e=<?php echo $event_id; ?>" class="redirect-button">Editar evento</a>
+                    <button class="delete-event">Deletar evento</button>
+                </aside>
+                <section class="delete-modal">
+                    <form action="#" method="POST">
+                        <fieldset class="modal-info">
+                            <h3 class="modal-title">Deseja mesmo deletar o evento?</h3>
+                            <p class="modal-paragraph">Esta ação é irreversível. Para deletar o evento digite o nome do evento abaixo <i><?php echo $event['name']; ?></i></p>
+                            <input type="text" name="delete-event-name" id="delete-event-name" class="modal-input">
+                            <input type="submit" value="Deletar evento" class="delete-event-modal">
+                            <button type="button" class="cancel">Cancelar</button>
+                        </fieldset>
+                    </form>
+                </section>
+                <section id="other-infos">
+                    <h2 class="manage-event-title">Administradores</h2>
+                    <div class="event-admins">
+                        <?php
+                            foreach ($admins as $admin) {
+                        ?>
+                            <img src="../../../../assets/uploads/<?php echo $admin['path']; ?>" alt="" class="admin-profile-image">
+                        <?php
+                            }
+                        ?>
+                    </div>
+                    <h2 class="manage-event-title"><?php echo $sql_confirmed_query->num_rows; ?> Pessoas Confirmadas</h2>
+                    <div class="table">
+                        <table id="tableExport">
                             <tr>
                                 <th class="table-info">Nome</th>
                                 <th class="table-info">Email</th>
                                 <th class="table-info">Telefone</th>
                                 <th class="table-info">CPF</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php 
+                            <?php
                                 while ($data = $sql_confirmed_query->fetch_array()) {
                             ?>
                                 <tr>
@@ -196,16 +177,15 @@
                                     <td><?php echo $data['tel']; ?></td>
                                     <td><?php echo $data['cpf']; ?></td>
                                 </tr>
-                            <?php        
+                            <?php
                                 }
                             ?>
-                        </tbody>
-                    </table>
-                </div>
-
-                <button id="exportTable">Baixar tabela</button>
-            </section>
-        </div>
+                        </table>
+                    </div>
+                    <button id="export-table">Baixar tabela</button>
+                </section>
+            </div>
+        </section>
     </main>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -216,7 +196,7 @@
         $(document).ready(function () {
             $(".delete-modal").hide();
 
-            $("#exportTable").click(function () {
+            $("#export-table").click(function () {
                 $("#tableExport").btechco_excelexport({
                     containerid: "tableExport",
                     datatype: $datatype.Table,
@@ -226,7 +206,7 @@
 
             $(".delete-event").click(function () {
                 $(".delete-modal").show();
-                $(".cancel-delete").click(function () {
+                $(".cancel").click(function () {
                     $(".delete-modal").hide();
                 })
             })

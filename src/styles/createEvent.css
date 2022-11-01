@@ -1,59 +1,60 @@
-main {
-    max-width: 1400px;
-    margin: 20px auto;
+#create-event-page, #register-admin-page, #edit-event-page {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#create-event-page > form, #register-admin-page > form, #edit-event-page > form {
+    width: 90%;
     background-color: var(--main-background-color);
     border-radius: var(--border-radius);
     padding: 20px;
 }
 
-fieldset {
+#create-event-page > form > fieldset, #register-admin-page > form > fieldset, #edit-event-page > form > fieldset {
     display: flex;
     flex-direction: column;
-    border: none;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
 }
 
-legend {
+#create-event-page > form > fieldset > legend, #register-admin-page > form > fieldset > legend, #edit-event-page > form > fieldset > legend {
     font-size: var(--title-size);
     color: var(--main-color);
     font-weight: 500;
 }
 
-label {
+#create-event-page > form > fieldset > label, #register-admin-page > form > fieldset > label, #edit-event-page > form > fieldset > label {
+    font-size: 1.4rem;
     color: var(--paragraph-color);
-    font-size: 1.3rem;
+    margin-bottom: -30px;
 }
 
-.create-event-input, .register-admin-input {
+.create-event-input, .register-admin-input, .edit-event-input {
     width: 100%;
-    border: none;
-    outline: none;
-    border-radius: var(--border-radius);
-    padding: 15px;
-    margin-bottom: 10px;
     background-color: var(--input-background-color);
+    border-radius: var(--border-radius);
+    padding: 16px;
     color: var(--paragraph-color);
     box-shadow: 0 10px 10px var(--shadow-color);
-    resize: none;
     font-size: 1.1rem;
 }
 
-.create-event-input::placeholder {
-    color: var(--placeholder-color);
+.create-event-input:focus, .register-admin-input:focus, .edit-event-input:focus {
+    border: 1px solid var(--main-color);
 }
 
 input[type="submit"] {
     width: 100%;
-    padding: 16px 0;
-    margin: 25px 0;
-    border: none;
-    outline: none;
-    border-radius: var(--border-radius);
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--button-text-color);
     background-color: var(--main-color);
-    cursor: pointer;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--button-text-color);
+    padding: 16px;
     box-shadow: 0 10px 10px -12px var(--green-shadow-color);
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
@@ -61,42 +62,21 @@ input[type="submit"]:hover {
     background-color: var(--main-color-hover);
 }
 
-.cancel-event, .cancel-edit, .cancel-admin {
+.cancel {
     width: 100%;
-    padding: 10px;
     border: 2px solid var(--error-color);
-    outline: none;
     border-radius: var(--border-radius);
-    text-transform: uppercase;
     text-align: center;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--error-color);
-    background-color: transparent;
-    cursor: pointer;
+    padding: 16px;
     box-shadow: 0 10px 10px -12px var(--shadow-color);
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.cancel-event:hover, .cancel-edit:hover, .cancel-admin:hover {
+.cancel:hover {
     background-color: var(--error-color);
     color: var(--paragraph-color);
-}
-
-@media screen and (min-width:1024px) and (max-width:1439px) {
-    main {
-        width: 90%;
-    }
-}
-
-@media screen and (min-width:767px) and (max-width:1023px) {
-    main {
-        width: 90%;
-    }
-}
-
-@media screen and (max-width:767px) {
-    main {
-        width: 90%;
-    }
 }

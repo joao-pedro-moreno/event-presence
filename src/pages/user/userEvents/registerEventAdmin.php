@@ -30,12 +30,12 @@
                         $sql_code = "INSERT INTO `admins`(`event_id`, `email`) VALUES ('$event_id','$email')";
                         $sql_query = $mysqli->query($sql_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
     
-                        header("Location: manageEventPage.php?e=$event_id");
+                        header("Location: manageEvent.php?e=$event_id");
                     }
                 }
             }
         } else {
-            header("Location: manageEventPage.php?e=$event_id");
+            header("Location: manageEvent.php?e=$event_id");
         }
     } else {
         header("Location: ../../../../index.html");
@@ -72,17 +72,17 @@
     </header>
 
     <main>
-        <form action="#" method="POST">
-            <fieldset>
-                <legend>Registrar Administrador</legend>
-
-                <label for="admin-email">Email</label>
-                <input type="email" name="admin-email" id="admin-email" class="register-admin-input">
-
-                <input type="submit" value="Adicionar Administrador" class="submit-button">
-                <a href="./manageEventPage.php?e=<?php echo $event_id; ?>" class="cancel-admin">Cancelar Alterações</a>
-            </fieldset>
-        </form>
+        <section id="register-admin-page">
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Registrar Administrador</legend>
+                    <label for="admin-email">Email</label>
+                    <input type="email" name="admin-email" id="admin-email" class="register-admin-input">
+                    <input type="submit" value="Adicionar Administrador" class="submit-button">
+                    <a href="./manageEvent.php?e=<?php echo $event_id; ?>" class="cancel">Cancelar Alterações</a>
+                </fieldset>
+            </form>
+        </section>
     </main>
 
     <script>

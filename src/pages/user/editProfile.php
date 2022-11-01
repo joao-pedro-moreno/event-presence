@@ -18,7 +18,7 @@
             $_SESSION['user']['name'] = $user_name;
             $_SESSION['user']['user'] = $user_username;
 
-            header("Location: profilePage.php");
+            header("Location: profile.php");
         }
 
         $dir = "../../../assets/uploads/";
@@ -47,7 +47,7 @@
             $_SESSION['user']['user'] = $user_username;
             $_SESSION['user']['path'] = $file_path;
 
-            header("Location: profilePage.php");
+            header("Location: profile.php");
 
         } else {
             echo "Falha ao enviar arquivo!";
@@ -88,27 +88,25 @@
     </header>
 
     <main>
-        <div class="profile-content">            
-            <section>
-                <form action="#" method="POST" enctype="multipart/form-data">
-                    <fieldset>
-                        <legend>Editar Perfil</legend>
+        <section id="edit-profile-page">    
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>Editar Perfil</legend>
 
-                        <label for="edit-name">Nome</label>
-                        <input type="text" name="edit-name" id="edit-name" class="edit-input" value="<?php echo $user['name']; ?>" required>
+                    <label for="edit-name">Nome</label>
+                    <input type="text" name="edit-name" id="edit-name" class="edit-input" value="<?php echo $user['name']; ?>" required>
 
-                        <label for="edit-user">Usuário</label>
-                        <input type="text" name="edit-user" id="edit-user" class="edit-input" value="<?php echo $user['user']; ?>" required>
+                    <label for="edit-user">Usuário</label>
+                    <input type="text" name="edit-user" id="edit-user" class="edit-input" value="<?php echo $user['user']; ?>" required>
 
-                        <label for="edit-image">Foto de Perfil</label>
-                        <input type="file" name="edit-image" id="edit-image" class="edit-input" accept="image/x-png,image/jpeg">
+                    <label for="edit-image">Foto de Perfil</label>
+                    <input type="file" name="edit-image" id="edit-image" class="edit-input" accept="image/x-png,image/jpeg">
 
-                        <input type="submit" value="Salvar Alterações">
-                        <a href="./profilePage.php" class="cancel-edit">Cancelar Alterações</a>
-                    </fieldset>
-                </form>
-            </section>
-        </div>
+                    <input type="submit" value="Salvar Alterações">
+                    <a href="./profile.php" class="cancel">Cancelar Alterações</a>
+                </fieldset>
+            </form>
+        </section>
     </main>
 </body>
 </html>

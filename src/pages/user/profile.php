@@ -42,7 +42,7 @@
     </header>
 
     <main>
-        <div class="profile-content">
+        <section id="profile-page">
             <aside>
                 <img src="../../../assets/uploads/<?php echo $user['path']; ?>" alt="" class="profile-image">
                 <div class="profile-info">
@@ -56,8 +56,6 @@
                     <a href="../../php/logout.php" class="disconnect-profile">Desconectar</a>
                 </div>
             </aside>
-
-            <hr>
             
             <section>
                 <h2 class="section-title">Seus eventos</h2>
@@ -71,7 +69,7 @@
                     <?php
                         while($data = $sql_query->fetch_array()) {
                     ?>
-                            <article>
+                            <article class="event-card">
                                 <img src="../../../assets/uploads/<?php echo $data['banner']; ?>" alt="Banner do evento" class="event-banner">
         
                                 <h3 class="event-name"><?php echo $data['name']; ?></h3>
@@ -83,7 +81,7 @@
                     ?>
                 </div>
             </section>
-        </div>
+        </section>
     </main>
 </body>
 </html>

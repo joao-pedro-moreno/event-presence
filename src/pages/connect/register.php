@@ -31,7 +31,7 @@
     
                     $_SESSION['user'] = $user;
 
-                    header("Location: ../user/profilePage.php");
+                    header("Location: ../user/profile.php");
                 } else {
                     echo "Suas senhas são diferentes";
                 }

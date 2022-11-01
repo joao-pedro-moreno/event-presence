@@ -2,7 +2,7 @@
     session_start();
 
     if (isset($_SESSION['user'])) {
-        header("Location: ../user/profilePage.php");
+        header("Location: ../user/profile.php");
     }
 
     include('../../php/connection.php');
@@ -27,7 +27,7 @@
 
                 $_SESSION['user'] = $user;
 
-                header("Location: ../user/profilePage.php");
+                header("Location: ../user/profile.php");
             } else {
                 echo "Falha ao se conectar! Email ou senha incorretos";
             }
