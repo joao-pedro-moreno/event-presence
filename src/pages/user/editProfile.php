@@ -50,7 +50,8 @@
             header("Location: profile.php");
 
         } else {
-            echo "Falha ao enviar arquivo!";
+            $_SESSION['notify_type'] = "error";
+            $_SESSION['notify_message'] = "Falha ao enviar arquivo";
         }
     }
 ?>
@@ -65,6 +66,7 @@
     <!-- Importação de estilos -->
     <link rel="stylesheet" href="../../styles/config.css">
     <link rel="stylesheet" href="../../styles/editProfile.css">
+    <link rel="stylesheet" href="../../styles/notify.css">
     <link rel="stylesheet" href="../../styles/components/header.css">
 
     <!-- Importação lib de ícones -->
@@ -108,5 +110,10 @@
             </form>
         </section>
     </main>
+
+    <script src="../../js/notify.js"></script>
+    <script>
+        createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
+    </script>
 </body>
 </html>

@@ -16,7 +16,8 @@
         if ($sql_owner_verification_query->num_rows > 0) {
             if (isset($_POST['admin-email'])) {
                 if (strlen($_POST['admin-email']) == 0) {
-                    echo "Insira um valor válido";
+                    $_SESSION['notify_type'] = "error";
+                    $_SESSION['notify_message'] = "Insira valores válidos";
                 } else {
                     $email = $mysqli->real_escape_string($_POST['admin-email']);
     
@@ -24,8 +25,8 @@
                     $sql_admin_verification_query = $mysqli->query($sql_admin_verification_code) or die("Falha ao executar código SQL: " . $mysqli->error);
     
                     if ($sql_admin_verification_query->num_rows > 0) {
-                        // echo "Admin já registrado";
-                        $_SESSION['notify'] = "Admin já registrado";
+                        $_SESSION['notify_type'] = "error";
+                        $_SESSION['notify_message'] = "Admin já registrado";
                     } else {
                         $sql_code = "INSERT INTO `admins`(`event_id`, `email`) VALUES ('$event_id','$email')";
                         $sql_query = $mysqli->query($sql_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
@@ -52,10 +53,14 @@
     <!-- Importação de estilos -->
     <link rel="stylesheet" href="../../../styles/config.css">
     <link rel="stylesheet" href="../../../styles/createEvent.css">
+    <link rel="stylesheet" href="../../../styles/notify.css">
     <link rel="stylesheet" href="../../../styles/components/header.css">
 
     <!-- Importação Favicon -->
     <link rel="shortcut icon" href="../../../../assets/favicon.ico" type="image/x-icon">
+
+    <!-- Importação lib de ícones -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
         
     <title>Editar evento</title>
 </head>
@@ -85,10 +90,11 @@
         </section>
     </main>
 
+    <section class="notify-section"></section>
+
+    <script src="../../../js/notify.js"></script>
     <script>
-        if (<?php echo isset($_SESSION['notify']); ?>) {
-            alert("<?php echo $_SESSION['notify']; unset($_SESSION['notify']); ?>");
-        }
+        createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
     </script>
 </body>
 </html>

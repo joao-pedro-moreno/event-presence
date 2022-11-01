@@ -46,7 +46,8 @@
     
             if (isset($_POST['delete-event-name'])) {
                 if (strlen($_POST['delete-event-name']) == 0) {
-                    echo "Favor inserir um valor válido";
+                    $_SESSION['notify_type'] = "error";
+                    $_SESSION['notify_message'] = "Insira valores válidos";
                 } else {
                     $name = $mysqli->real_escape_string($_POST['delete-event-name']);
     
@@ -56,7 +57,8 @@
                         
                         header("Location: ../profile.php");
                     } else {
-                        echo "Nome incorreto!";
+                        $_SESSION['notify_type'] = "error";
+                        $_SESSION['notify_message'] = "Nome incorreto";
                     }
                 }
             }
@@ -79,6 +81,7 @@
     <!-- Importação de estilos -->
     <link rel="stylesheet" href="../../../styles/config.css">
     <link rel="stylesheet" href="../../../styles/manageEvent.css">
+    <link rel="stylesheet" href="../../../styles/notify.css">
     <link rel="stylesheet" href="../../../styles/components/header.css">
 
     <!-- Importação Favicon -->
@@ -187,6 +190,13 @@
             </div>
         </section>
     </main>
+
+    <section class="notify-section"></section>
+
+    <script src="../../../js/notify.js"></script>
+    <script>
+        createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
+    </script>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="../../../js/jquery.btechco.excelexport.js"></script>

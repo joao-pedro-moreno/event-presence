@@ -1,0 +1,37 @@
+.notify {
+    max-width: 300px;
+    position: fixed;
+    top: 10%;
+    right: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px;
+    gap: 15px;
+    border-radius: var(--border-radius);
+}
+
+.error-notify {
+    background-color: var(--notify-error-color);
+}
+
+.success-notify {
+    background-color: var(--notify-success-color);
+}
+
+.notify > .bx {
+    font-size: 2.3rem;
+    color: var(--paragraph-color);
+}
+
+.notify-title {
+    color: var(--title-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.notify-message {
+    color: var(--paragraph-color);
+    font-size: 1.2rem;
+}

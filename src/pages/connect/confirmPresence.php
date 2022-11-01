@@ -11,7 +11,8 @@
 
         if (isset($_POST['confirm-name']) || isset($_POST['confirm-email']) || isset($_POST['confirm-tel']) || isset($_POST['confirm-cpf'])) {
             if (strlen($_POST['confirm-name']) == 0 || strlen($_POST['confirm-email']) == 0 || strlen($_POST['confirm-tel']) == 0 || strlen($_POST['confirm-cpf']) == 0) {
-                echo "Insira valores válidos";
+                $_SESSION['notify_type'] = "error";
+                $_SESSION['notify_message'] = "Insira valores válidos";
             } else {
                 $name = $mysqli->real_escape_string($_POST['confirm-name']);
                 $email = $mysqli->real_escape_string($_POST['confirm-email']);
@@ -22,7 +23,8 @@
                 $sql_confirmed_verification_query = $mysqli->query($sql_confirmed_verification_code) or die("Falha ao executar código SQL: " . $mysqli->error);
 
                 if ($sql_confirmed_verification_query->num_rows > 0) {
-                    echo "Esta pessoa já está confirmada";
+                    $_SESSION['notify_type'] = "error";
+                    $_SESSION['notify_message'] = "Pessoa já confirmada";
                 } else {
                     $sql_confirmed_code = "INSERT INTO `confirmed`(`event_id`, `name`, `email`, `tel`, `cpf`) VALUES ('$event_id','$name', '$email','$tel','$cpf')";
                     $sql_confirmed_query = $mysqli->query($sql_confirmed_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
@@ -48,6 +50,7 @@
     <link rel="stylesheet" href="../../styles/config.css">
     <link rel="stylesheet" href="../../styles/confirmPage.css">
     <link rel="stylesheet" href="../../styles/eventInfo.css">
+    <link rel="stylesheet" href="../../styles/notify.css">
     <link rel="stylesheet" href="../../styles/components/header.css">
 
     <!-- Importação Favicon -->
@@ -135,5 +138,12 @@
             </div>
         </section>
     </main>
+
+    <section class="notify-section"></section>
+
+    <script src="../../js/notify.js"></script>
+    <script>
+        createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
+    </script>
 </body>
 </html>

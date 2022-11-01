@@ -20,16 +20,22 @@
 
             $user = $sql_query->fetch_assoc();
 
-            if (password_verify($password, $user['pass'])) {
-                if (!isset($_SESSION)) {
-                    session_start();
+            if ($sql_query->num_rows > 0) {
+                if (password_verify($password, $user['pass'])) {
+                    if (!isset($_SESSION)) {
+                        session_start();
+                    }
+    
+                    $_SESSION['user'] = $user;
+    
+                    header("Location: ../user/profile.php");
+                } else {
+                    $_SESSION['notify_type'] = "error";
+                    $_SESSION['notify_message'] = "Email ou senha incorretos";
                 }
-
-                $_SESSION['user'] = $user;
-
-                header("Location: ../user/profile.php");
             } else {
-                echo "Falha ao se conectar! Email ou senha incorretos";
+                $_SESSION['notify_type'] = "error";
+                $_SESSION['notify_message'] = "Email ou senha incorretos";
             }
         }
     }
@@ -46,11 +52,15 @@
     <!-- Importação de estilos -->
     <link rel="stylesheet" href="../../styles/config.css">
     <link rel="stylesheet" href="../../styles/home.css">
+    <link rel="stylesheet" href="../../styles/notify.css">
     <link rel="stylesheet" href="../../styles/components/header.css">
     <link rel="stylesheet" href="../../styles/components/connectForm.css">
 
     <!-- Importação Favicon -->
     <link rel="shortcut icon" href="../../../assets/favicon.ico" type="image/x-icon">
+
+    <!-- Importação lib de ícones -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <title>Login</title>
 </head>
@@ -93,5 +103,12 @@
             </form>
         </section>
     </main>
+
+    <section class="notify-section"></section>
+
+    <script src="../../js/notify.js"></script>
+    <script>
+        createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
+    </script>
 </body>
 </html>

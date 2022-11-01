@@ -26,6 +26,7 @@
     <!-- Importação de estilos -->
     <link rel="stylesheet" href="../../styles/config.css">
     <link rel="stylesheet" href="../../styles/home.css">
+    <link rel="stylesheet" href="../../styles/notify.css">
     <link rel="stylesheet" href="../../styles/components/header.css">
     <link rel="stylesheet" href="../../styles/components/connectForm.css">
 

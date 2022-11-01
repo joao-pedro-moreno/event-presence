@@ -6,6 +6,6 @@
     $user = $_SESSION['user'];
 
     if (!isset($user)) {
-        die("Você precisa iniciar a sessão para acessar essa página <a href='../../index.html'>Voltar</a>");
+        header("Location: ../../index.html");
     }
 ?>
