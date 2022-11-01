@@ -1,64 +1,62 @@
-main {
-    max-width: 1500px;
+#contact-page {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    margin: auto;
-    height: calc(100vh - 70px);
+    justify-content: center;
+    gap: 60px;
 }
 
-section {
-    width: 50%;
+.contact-title {
+    color: var(--main-color);
+    font-weight: 500;
+    margin-bottom: -50px;
+}
+
+.contact-link {
+    color: var(--paragraph-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--main-color-hover);
+}
+
+.social-media-section {
+    display: flex;
+    text-align: center;
+    gap: 30px;
+}
+
+.social-media-section .bx {
+    font-size: 2.5rem;
+    color: var(--main-color);
+    transition: all 0.3s ease;
+}
+
+.social-media-section .bx:hover {
+    color: var(--main-color-hover);
+    transform: scale(1.3);
+}
+
+#about-page {
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    gap: 20px;
+    background-color: var(--main-background-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
 }
 
-.content-title {
-    color: var(--title-color);
-    font-size: var(--title-size);
-    font-weight: var(--second-title-weight);
-}
-
-.content-subtitle {
-    font-size: 3rem;
+.about-title {
     color: var(--main-color);
-    font-weight: 600; 
+    font-weight: 500;
 }
 
-.paragraph {
+.about-paragraph {
     color: var(--paragraph-color);
-    text-align: justify;
-    margin-top: 20px;
     text-indent: var(--paragraph-text-indent);
-}
-
-.main-image {
-    margin-left: 30px;
-    width: 35vw;
-    max-width: 580px;
-}
-
-@media screen and (max-width:767px) {
-    main {
-        display: block;
-    }
-
-    section {
-        width: 90vw;
-        margin: auto;
-    }
-
-    .content-subtitle {
-        font-size: 2.4rem;
-    }
-
-    .main-image {
-        width: 75vw;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-left: 0;
-    }
 }

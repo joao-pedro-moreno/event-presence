@@ -1,190 +1,105 @@
-main {
-    max-width: 1400px;
+#confirm-presence-page {
+    width: 90%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin: 20px auto;
+    gap: 20px;
+    padding: 20px;
     background-color: var(--main-background-color);
     border-radius: var(--border-radius);
-    padding: 30px;
+
 }
 
-.back-button {
+.confirm-event-content {
     width: 100%;
-    margin-bottom: 10px;
-    text-align: left;
     display: flex;
-    align-items: center;
-    color: var(--paragraph-color);
-    text-decoration: none;
-    transition: all 0.3s ease;
+    gap: 80px;
 }
 
-.back-button:hover {
-    color: var(--main-color);
-}
-
-.event-banner {
+.event-aside-banner {
     width: 100%;
     max-width: 350px;
     border-radius: var(--image-border-radius);
     box-shadow: 0 10px 10px var(--shadow-color);
-    margin: auto;
-    margin-bottom: 30px;
 }
 
-.event-content {
-    width: 100%;
-    display: flex;
-}
-
-.event-name {
-    color: var(--main-color);
-    font-size: var(--title-size);
-    margin-bottom: 30px;
-}
-
-form {
-    width: 100%;
-    padding: 30px;
-}
-
-fieldset {
-    border: none;
-    width: 100%;
+.page-form > fieldset {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin: 10px 0;
+    gap: 20px;
 }
 
-legend {
+.page-form > fieldset > legend {
     color: var(--main-color);
-    font-weight: 800;
-    font-size: 30px;
+    font-weight: 600;
+    font-size: 2.5rem;
     margin: 0;
 }
 
-label {
+.page-form > fieldset > label {
     color: var(--paragraph-color);
-    margin-bottom: 10px;
+    margin-bottom: -10px;
 }
 
-.confirm-input {
+.page-form-input {
     width: 100%;
-    border: none;
-    outline: none;
-    border-radius: var(--border-radius);
-    padding: 15px;
-    margin-bottom: 10px;
     background-color: var(--input-background-color);
+    border-radius: var(--border-radius);
+    padding: 16px;
     color: var(--paragraph-color);
     box-shadow: 0 10px 10px var(--shadow-color);
 }
+.page-form-input:focus {
+    border: 1px solid var(--main-color);
+}
 
-.submit-button {
+.page-form-submit {
     width: 100%;
-    padding: 16px 0;
-    margin: 25px 0;
-    border: none;
-    outline: none;
-    border-radius: var(--border-radius);
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--button-text-color);
     background-color: var(--main-color);
-    cursor: pointer;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--button-text-color);
+    padding: 16px;
     box-shadow: 0 10px 10px -12px var(--green-shadow-color);
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.submit-button:hover {
+.page-form-submit:hover {
     background-color: var(--main-color-hover);
 }
 
-aside {
-    min-height: 650px;
-    background-color: var(--input-background-color);
-    padding: 20px;
-    border-radius: var(--border-radius);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-shadow: 0 10px 10px var(--shadow-color);
-    overflow-x: hidden;
-}
-
-aside > hr {
-    opacity: 0.2;
-    margin: 10px 0;
-}
-
-.event-aside-title {
-    color: var(--main-color);
-}
-
-.event-aside-info {
-    color: var(--paragraph-color);
-}
-
-.event-aside-ticket::before {
-    content: "R$ ";
-}
-
-.event-aside-hour::after {
-    content: " horas";
-}
-
-.cancel-confirm {
+.cancel {
     width: 100%;
-    padding: 10px;
     border: 2px solid var(--error-color);
-    outline: none;
     border-radius: var(--border-radius);
-    text-transform: uppercase;
     text-align: center;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--error-color);
-    background-color: transparent;
-    cursor: pointer;
+    padding: 16px;
     box-shadow: 0 10px 10px -12px var(--shadow-color);
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.cancel-confirm:hover {
+.cancel:hover {
     background-color: var(--error-color);
     color: var(--paragraph-color);
 }
 
-@media screen and (min-width:1024px) and (max-width:1439px) {
-    section {
-        width: 60%;
+@media screen and (max-width:1023px) {
+    .confirm-event-content {
+        flex-direction: column;
     }
 }
 
 @media screen and (min-width:767px) and (max-width:1023px) {
-    main {
-        width: 90%;
-    }
-
-    .event-content {
-        flex-direction: column;
-    }
-}
-
-@media screen and (max-width:767px) {
-    main {
-        width: 90%;
-    }
-
-    .event-content {
-        flex-direction: column;
-    }
-
-    form {
-        padding: 0;
+    .event-aside-banner {
+        max-width: none;
     }
 }

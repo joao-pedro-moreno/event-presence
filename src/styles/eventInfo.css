@@ -1,18 +1,17 @@
-main {
-    max-width: 1400px;
+#event-info-page {
+    width: 90%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin: 20px auto;
+    gap: 20px;
     background-color: var(--main-background-color);
     border-radius: var(--border-radius);
-    padding: 30px;
+    padding: 20px;
 }
 
 .back-button {
     width: 100%;
-    margin-bottom: 10px;
     text-align: left;
     display: flex;
     align-items: center;
@@ -35,16 +34,14 @@ main {
 .event-content {
     width: 100%;
     display: flex;
-}
-
-section {
-    width: 80%;
+    justify-content: space-between;
+    gap: 80px;
 }
 
 .event-name {
     color: var(--main-color);
     font-size: var(--title-size);
-    margin-bottom: 30px;
+    font-weight: 500;
 }
 
 .event-info-title {
@@ -57,47 +54,26 @@ section {
 .event-info {
     text-indent: var(--paragraph-text-indent);
     color: var(--paragraph-color);
-    width: 90%;
 }
 
-section > ul {
+#event-info-page-section > ul    {
     margin: 0 20px;
     color: var(--paragraph-color);
 }
 
-.slider {
-    width: 90%;
-    display: grid;
-    grid-auto-flow: column;
-    scroll-behavior: auto;
-    gap: 1.2rem;
-    overflow-y: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    margin: 20px 0;
-    border-radius: var(--image-border-radius);
-}
-
-.slider-image {
-    width: 700px;
-    border-radius: var(--image-border-radius);
-    box-shadow: 0 10px 10px var(--shadow-color);
-}
-
 .redirect-confirm-page {
     display: block;
-    width: 90%;
-    margin-top: 10px;
-    padding: 16px;
+    margin-top: 30px;
+    width: 100%;
+    background-color: var(--main-color);
     border-radius: var(--border-radius);
     text-align: center;
     text-decoration: none;
     font-weight: 500;
     color: var(--button-text-color);
-    background-color: var(--main-color);
+    padding: 16px;
+    box-shadow: 0 10px 10px var(--green-shadow-color);
     cursor: pointer;
-    box-shadow: 0 10px 10px -12px var(--green-shadow-color);
     transition: all 0.3s ease;
 }
 
@@ -105,19 +81,20 @@ section > ul {
     background-color: var(--main-color-hover);
 }
 
-aside {
-    max-height: 650px;
+#event-info-page-aside {
+    min-width: fit-content;
     background-color: var(--input-background-color);
-    padding: 20px;
     border-radius: var(--border-radius);
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 10px;
     box-shadow: 0 10px 10px var(--shadow-color);
-    overflow-x: hidden;
 }
 
-aside > hr {
+#event-info-page-aside > hr {
+    border: 1px solid var(--paragraph-color);
     opacity: 0.2;
 }
 
@@ -137,67 +114,8 @@ aside > hr {
     content: " horas";
 }
 
-@media screen and (min-width:1024px) and (max-width:1439px) {
-
-    .event-content {
-        justify-content: space-around;
-    }
-
-    section {
-        width: 60%;
-    }
-}
-
-@media screen and (min-width:767px) and (max-width:1023px) {
-    main {
-        width: 90%;
-    }
-
+@media screen and (max-width:1023px) {
     .event-content {
         flex-direction: column;
-    }
-
-    section {
-        width: 100%;
-    }
-
-    .event-info {
-        width: 100%;
-    }
-
-    .slider {
-        width: 100%;
-    }
-
-    .redirect-confirm-page {
-        width: 100%;
-        margin-bottom: 40px;
-    }
-}
-
-@media screen and (max-width:767px) {
-    main {
-        width: 90%;
-    }
-
-    .event-content {
-        flex-direction: column;
-    }
-
-    section {
-        width: 100%;
-    }
-
-    .event-info {
-        width: 100%;
-    }
-
-    .slider {
-        width: 100%;
-    }
-
-    .redirect-confirm-page {
-        width: 100%;
-        margin-bottom: 40px;
     }
 }

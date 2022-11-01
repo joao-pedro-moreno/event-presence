@@ -45,7 +45,7 @@
 
     <!-- Importação de estilos -->
     <link rel="stylesheet" href="../../styles/config.css">
-    <link rel="stylesheet" href="../../styles/defaultPage.css">
+    <link rel="stylesheet" href="../../styles/home.css">
     <link rel="stylesheet" href="../../styles/components/header.css">
     <link rel="stylesheet" href="../../styles/components/connectForm.css">
 
@@ -59,37 +59,39 @@
         <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
-            <a href="../eventFeedPage.php" class="header-links">Eventos</a>
-            <a href="../aboutPage.html" class="header-links">Sobre</a>
-            <a href="../contactPage.html" class="header-links">Contato</a>
-            <a href="./registerPage.php" id="connect-redirect">Não possui uma conta?</a>
+            <a href="../eventFeed.php" class="header-links">Eventos</a>
+            <a href="../about.html" class="header-links">Sobre</a>
+            <a href="../contact.html" class="header-links">Contato</a>
+            <a href="./register.php" id="connect-redirect">Não possui uma conta?</a>
         </nav>
     </header>
 
     <main>
-        <section>
-            <h2 class="content-subtitle">Conecte-se para administrar seus eventos</h2>
+        <section class="connect-form-page">
+            <section>
+                <h2 class="index-subtitle">Conecte-se para administrar seus eventos</h2>
 
-            <img src="../../../assets/ball.svg" alt="" class="main-image">
+                <img src="../../../assets/ball.svg" alt="" class="index-image">
+            </section>
+
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Login</legend>
+
+                    <label for="login-email">Email</label>
+                    <input type="email" name="login-email" id="login-email" class="connect-input" required>
+
+                    <label for="login-password">Senha</label>
+                    <input type="password" name="login-password" id="login-password" class="connect-input" required>
+
+                    <a href="./recoveryPassword.php" class="forgot-password">Esqueceu a senha?</a>
+
+                    <input type="submit" value="Logar" class="connect-submit">
+
+                    <span class="redirect-connect">Não possui uma conta? <a href="./register.php" class="redirect-connect-link">Registre-se</a></span>
+                </fieldset>
+            </form>
         </section>
-
-        <form action="#" method="POST">
-            <fieldset>
-                <legend>Login</legend>
-
-                <label for="login-email">Email</label>
-                <input type="email" name="login-email" id="login-email" class="connect-input" required>
-
-                <label for="login-password">Senha</label>
-                <input type="password" name="login-password" id="login-password" class="connect-input" required>
-
-                <a href="./forgotPassword.php" class="forgot-password">Esqueceu a senha?</a>
-
-                <input type="submit" value="Logar" class="submit-button">
-
-                <span class="form-redirect">Não possui uma conta? <a href="./registerPage.php" class="form-redirect-link">Registre-se</a></span>
-            </fieldset>
-        </form>
     </main>
 </body>
 </html>

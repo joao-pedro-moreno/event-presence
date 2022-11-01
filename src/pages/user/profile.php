@@ -30,18 +30,16 @@
     <title>Perfil</title>
 </head>
 <body>
-    <!-- <header>
+    <header>
         <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
-            <a href="../eventFeedPage.php" class="header-links">Eventos</a>
-            <a href="../aboutPage.html" class="header-links">Sobre</a>
-            <a href="../contactPage.html" class="header-links">Contato</a>
-            <a href="../connect/loginPage.php" id="connect-redirect">Já possui uma conta?</a>
+            <a href="../eventFeed.php" class="header-links">Eventos</a>
+            <a href="../about.html" class="header-links">Sobre</a>
+            <a href="../contact.html" class="header-links">Contato</a>
+            <a href="../connect/login.php" id="connect-redirect">Já possui uma conta?</a>
         </nav>
-    </header> -->
-
-    <?php require("../../php/header.php"); ?>
+    </header>
 
     <main>
         <div class="profile-content">
@@ -65,7 +63,7 @@
                 <h2 class="section-title">Seus eventos</h2>
 
                 <div class="user-events">
-                    <a href="./userEvents/createEventPage.php" class="event-create">
+                    <a href="./userEvents/createEvent.php" class="event-create">
                         <i class='bx bx-plus'></i>
                         <span class="create-event-span">Criar um novo Evento</span>
                     </a>
@@ -78,7 +76,7 @@
         
                                 <h3 class="event-name"><?php echo $data['name']; ?></h3>
         
-                                <a href="./userEvents/manageEventPage.php?e=<?php echo $data['id']; ?>" class="manage-event-button">Gerenciar evento</a>
+                                <a href="./userEvents/manageEvent.php?e=<?php echo $data['id']; ?>" class="manage-event-button">Gerenciar evento</a>
                             </article>
                     <?php
                         }

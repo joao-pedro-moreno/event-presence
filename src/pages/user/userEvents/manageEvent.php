@@ -95,10 +95,10 @@
         <h1 class="header-title"><a href="../../../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
-            <a href="../../eventFeedPage.php" class="header-links">Eventos</a>
-            <a href="../../aboutPage.html" class="header-links">Sobre</a>
-            <a href="../../contactPage.html" class="header-links">Contato</a>
-            <a href="../../connect/loginPage.php" id="connect-redirect">Já possui uma conta?</a>
+            <a href="../../eventFeed.php" class="header-links">Eventos</a>
+            <a href="../../about.html" class="header-links">Sobre</a>
+            <a href="../../contact.html" class="header-links">Contato</a>
+            <a href="../../connect/login.php" id="connect-redirect">Já possui uma conta?</a>
         </nav>
     </header>
 

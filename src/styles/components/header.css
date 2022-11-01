@@ -1,5 +1,5 @@
 header {
-    max-width: 1500px;
+    /* max-width: 1500px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,19 +41,6 @@ header {
     color: var(--body-background-color);
 }
 
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-
-#profile-redirect > img {
-    height: 50px;
-    border-radius: 100%;
-    border: 1px solid var(--main-color);
-    padding: 3px;
-}
 
 @media screen and (min-width:767px) and (max-width:1023px) {
     .header-title {

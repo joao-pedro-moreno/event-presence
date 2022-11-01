@@ -1,4 +1,16 @@
-form {
+.connect-form-page {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.connect-form-page > section {
+    width: 50%;
+}
+
+.connect-form-page > form , #recovery-password-page > form {
     width: 400px;
     padding: 30px;
     background-color: var(--form-background-color);
@@ -6,76 +18,37 @@ form {
     box-shadow: 0 10px 10px var(--shadow-color);
 }
 
-fieldset {
-    border: none;
+.connect-form-page > form > fieldset , #recovery-password-page > form > fieldset {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    margin: 10px 0;
+    gap: 20px;
+
 }
 
-legend {
+.connect-form-page > form > fieldset > legend, #recovery-password-page > form > fieldset > legend {
     color: var(--main-color);
-    font-weight: 800;
-    font-size: 30px;
-    margin: 0;
+    font-weight: 500;
+    font-size: 2.2rem;
+}
+
+.connect-form-page > form > fieldset > label, #recovery-password-page > form > fieldset > label {
+    color: var(--paragraph-color);
+    margin-bottom: -10px;
 }
 
 .connect-input {
     width: 100%;
-    border: none;
-    outline: none;
-    border-radius: var(--border-radius);
-    padding: 15px;
-    margin-bottom: 10px;
     background-color: var(--input-background-color);
+    border-radius: var(--border-radius);
+    padding: 16px;
     color: var(--paragraph-color);
     box-shadow: 0 10px 10px var(--shadow-color);
 }
-
-.connect-input::placeholder {
-    color: var(--placeholder-color);
-}
-
-label {
-    color: var(--paragraph-color);
-    margin-bottom: 10px;
-}
-
-.submit-button {
-    width: 100%;
-    padding: 16px 0;
-    margin: 25px 0;
-    border: none;
-    outline: none;
-    border-radius: var(--border-radius);
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--button-text-color);
-    background-color: var(--main-color);
-    cursor: pointer;
-    box-shadow: 0 10px 10px -12px var(--green-shadow-color);
-    transition: all 0.3s ease;
-}
-
-.submit-button:hover {
-    background-color: var(--main-color-hover);
-}
-
-.form-redirect {
-    color: var(--paragraph-color);
-}
-
-.form-redirect-link, .form-redirect-link:visited {
-    color: var(--main-color);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.form-redirect-link:hover {
-    color: var(--main-color-hover);
+.connect-input:focus {
+    border: 1px solid var(--main-color);
 }
 
 .forgot-password {
@@ -88,46 +61,58 @@ label {
     color: var(--main-color);
 }
 
-.cancel-confirm {
+.connect-submit {
     width: 100%;
-    padding: 10px;
-    border: 2px solid var(--error-color);
-    outline: none;
+    background-color: var(--main-color);
     border-radius: var(--border-radius);
-    text-transform: uppercase;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 600;
-    color: var(--error-color);
-    background-color: transparent;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--button-text-color);
+    padding: 16px;
+    box-shadow: 0 10px 10px -12px var(--green-shadow-color);
     cursor: pointer;
-    box-shadow: 0 10px 10px -12px var(--shadow-color);
     transition: all 0.3s ease;
 }
 
-.cancel-confirm:hover {
+.connect-submit:hover {
+    background-color: var(--main-color-hover);
+}
+
+.redirect-connect {
+    color: var(--paragraph-color);
+}
+
+.redirect-connect-link {
+    color: var(--main-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.redirect-connect-link:hover {
+    color: var(--main-color-hover);
+}
+
+.cancel {
+    width: 100%;
+    border: 2px solid var(--error-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--error-color);
+    padding: 16px;
+    box-shadow: 0 10px 10px -12px var(--shadow-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancel:hover {
     background-color: var(--error-color);
     color: var(--paragraph-color);
 }
 
-@media screen and (min-width:767px) and (max-width:1023px) {
-    form {
-        width: 350px;
-    }
-}
-
-@media screen and (max-width:767px) {
-    .main-image {
+@media screen and (max-width:1023px) {
+    .connect-form-page > section, .index-image, .index-subtitle {
         display: none;
-    }
-
-    .content-subtitle {
-        text-align: center;
-    }
-
-    form {
-        width: 90%;
-        margin-bottom: 50px;
-        margin: auto;
     }
 }

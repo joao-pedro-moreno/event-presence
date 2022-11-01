@@ -52,7 +52,7 @@
 
     <!-- Importação de estilos -->
     <link rel="stylesheet" href="../../styles/config.css">
-    <link rel="stylesheet" href="../../styles/defaultPage.css">
+    <link rel="stylesheet" href="../../styles/home.css">
     <link rel="stylesheet" href="../../styles/components/header.css">
     <link rel="stylesheet" href="../../styles/components/connectForm.css">
 
@@ -66,41 +66,43 @@
         <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
-            <a href="../eventFeedPage.php" class="header-links">Eventos</a>
-            <a href="../aboutPage.html" class="header-links">Sobre</a>
-            <a href="../contactPage.html" class="header-links">Contato</a>
-            <a href="./loginPage.php" id="connect-redirect">Já possui uma conta?</a>
+            <a href="../eventFeed.php" class="header-links">Eventos</a>
+            <a href="../about.html" class="header-links">Sobre</a>
+            <a href="../contact.html" class="header-links">Contato</a>
+            <a href="./login.php" id="connect-redirect">Já possui uma conta?</a>
         </nav>
     </header>
 
     <main>
-        <section>
-            <h2 class="content-subtitle">Crie sua conta para administrar seus eventos</h2>
-
-            <img src="../../../assets/ball.svg" alt="" class="main-image">
+        <section class="connect-form-page">
+            <section>
+                <h2 class="index-subtitle">Crie sua conta para administrar seus eventos</h2>
+            
+                <img src="../../../assets/ball.svg" alt="" class="index-image">
+            </section>
+            
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Criar conta</legend>
+            
+                    <label for="register-user">Usuário</label>
+                    <input type="text" name="register-user" id="register-user" class="connect-input" required>
+            
+                    <label for="register-email">Email</label>
+                    <input type="email" name="register-email" id="register-email" class="connect-input" required>
+            
+                    <label for="register-password">Senha</label>
+                    <input type="password" name="register-password" id="register-password" class="connect-input" required>
+            
+                    <label for="register-confirm-password">Confirmar Senha</label>
+                    <input type="password" name="register-confirm-password" id="register-confirm-password" class="connect-input" required>
+            
+                    <input type="submit" value="Criar conta" class="connect-submit">
+            
+                    <span class="redirect-connect">Já possui uma conta? <a href="./login.php" class="redirect-connect-link">Faça login</a></span>
+                </fieldset>
+            </form>
         </section>
-
-        <form action="#" method="POST">
-            <fieldset>
-                <legend>Criar conta</legend>
-
-                <label for="register-user">Usuário</label>
-                <input type="text" name="register-user" id="register-user" class="connect-input" required>
-
-                <label for="register-email">Email</label>
-                <input type="email" name="register-email" id="register-email" class="connect-input" required>
-
-                <label for="register-password">Senha</label>
-                <input type="password" name="register-password" id="register-password" class="connect-input" required onkeyup="verifyPassword()">
-
-                <label for="register-confirm-password">Confirmar Senha</label>
-                <input type="password" name="register-confirm-password" id="register-confirm-password" class="connect-input" required onkeyup="verifyPassword()">
-
-                <input type="submit" value="Criar conta" class="submit-button">
-
-                <span class="form-redirect">Já possui uma conta? <a href="./loginPage.php" class="form-redirect-link">Faça login</a></span>
-            </fieldset>
-        </form>
     </main>
 </body>
 </html>

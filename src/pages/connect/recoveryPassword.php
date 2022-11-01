@@ -25,7 +25,7 @@
 
     <!-- Importação de estilos -->
     <link rel="stylesheet" href="../../styles/config.css">
-    <link rel="stylesheet" href="../../styles/defaultPage.css">
+    <link rel="stylesheet" href="../../styles/home.css">
     <link rel="stylesheet" href="../../styles/components/header.css">
     <link rel="stylesheet" href="../../styles/components/connectForm.css">
 
@@ -42,25 +42,27 @@
         <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
 
         <nav>
-            <a href="../eventFeedPage.php" class="header-links">Eventos</a>
-            <a href="../aboutPage.html" class="header-links">Sobre</a>
-            <a href="../contactPage.html" class="header-links">Contato</a>
-            <a href="./loginPage.php" id="connect-redirect">Já possui uma conta?</a>
+            <a href="../eventFeed.php" class="header-links">Eventos</a>
+            <a href="../about.html" class="header-links">Sobre</a>
+            <a href="../contact.html" class="header-links">Contato</a>
+            <a href="./login.php" id="connect-redirect">Já possui uma conta?</a>
         </nav>
     </header>
 
     <main>
-        <form action="#" method="POST">
-            <fieldset>
-                <legend>Recuperar Senha</legend>
-
-                <label for="recovery-email">Email</label>
-                <input type="email" name="recovery-email" id="recovery-email" class="connect-input" required>
-
-                <input type="submit" value="Recuperar" class="submit-button">
-                <a href="./loginPage.php" class="cancel-confirm">Cancelar</a>
-            </fieldset>
-        </form>
+        <section id="recovery-password-page">
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Recuperar Senha</legend>
+            
+                    <label for="recovery-email">Email</label>
+                    <input type="email" name="recovery-email" id="recovery-email" class="connect-input" required>
+            
+                    <input type="submit" value="Recuperar" class="connect-submit">
+                    <a href="./login.php" class="cancel">Cancelar</a>
+                </fieldset>
+            </form>
+        </section>
     </main>
 </body>
 </html>
