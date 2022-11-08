@@ -16,16 +16,19 @@
     <title>Event Presence</title>
 </head>
 <body>
-    <header>
-        <h1 class="header-title"><a href="./index.html" class="index-redirect">Event Presence</a></h1>
-        
-        <nav>
-            <a href="./src/pages/eventFeed.php" class="header-links">Eventos</a>
-            <a href="./src/pages/about.html" class="header-links">Sobre</a>
-            <a href="./src/pages/contact.html" class="header-links">Contato</a>
-            <a href="./src/pages/connect/login.php" id="connect-redirect">Já possui uma conta?</a>
-        </nav>
-    </header>
+    <?php
+        $indexLink = './index.php';
+        $eventFeedLink = './src/pages/eventFeed.php';
+        $aboutLink = './src/pages/about.php';
+        $contactLink = './src/pages/contact.php';
+        $loginLink = './src/pages/connect/login.php';
+        $profileLink = './src/pages/user/profile.php';
+        $assetsRoute = './assets/uploads/';
+
+        global $indexLink, $eventFeedLink, $aboutLink, $contactLink, $loginLink, $profileLink, $assetsRoute;
+
+        include('./src/php/header.php');
+    ?>
 
     <main>
         <section id="index-page">

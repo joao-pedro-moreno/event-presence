@@ -6,6 +6,6 @@
     $user = $_SESSION['user'];
 
     if (!isset($user)) {
-        header("Location: ../../index.html");
+        header("Location: ../../../index.php");
     }
 ?>

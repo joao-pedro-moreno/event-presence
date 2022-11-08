@@ -1,19 +1,20 @@
 <?php
-    // include('../../php/connection.php');
+    if (isset($_SESSION['user'])) {
+        header("Location: ../user/profile.php");
+    }
 
-    // if (isset($_POST['recovery-email'])) {
-    //     if (strlen($_POST['recovery-email']) == 0) {
-    //         $email = $mysqli->real_escape_string($_POST['recovery-email']);
+    include('../../php/connection.php');
 
-    //         $new_password = substr(md5(time()), 0, 6);
-    //         $new_password_encrypted = md5(md5($new_password));
+    if (isset($_POST['recovery-email'])) {
+        if (strlen($_POST['recovery-email']) == 0) {
+            $_SESSION['notify_type'] = "error";
+            $_SESSION['notify_message'] = "Insira valores válidos";
+        } else {
+            $email = $mysqli->real_escape_string($_POST['recovery-email']);
 
-    //         $sql_code = "UPDATE users SET pass = '$new_password_encrypted' WHERE email = '$email'";
-    //         $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: ". $mysqli->error);
-
-    //         mail($email, "Sua nova senha", "Sua nova senha é: ".$new_password);
-    //     }
-    // }
+            
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -39,16 +40,19 @@
     <title>Recuperação de Senha</title>
 </head>
 <body>
-    <header>
-        <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
+    <?php
+        $indexLink = '../../../index.php';
+        $eventFeedLink = '../eventFeed.php';
+        $aboutLink = '../about.php';
+        $contactLink = '../contact.php';
+        $loginLink = '../connect/login.php';
+        $profileLink = '../user/profile.php';
+        $assetsRoute = '../../../assets/uploads/';
 
-        <nav>
-            <a href="../eventFeed.php" class="header-links">Eventos</a>
-            <a href="../about.html" class="header-links">Sobre</a>
-            <a href="../contact.html" class="header-links">Contato</a>
-            <a href="./login.php" id="connect-redirect">Já possui uma conta?</a>
-        </nav>
-    </header>
+        global $indexLink, $eventFeedLink, $aboutLink, $contactLink, $loginLink, $profileLink, $assetsRoute;
+
+        include('../../php/header.php');
+    ?>
 
     <main>
         <section id="recovery-password-page">
@@ -65,5 +69,12 @@
             </form>
         </section>
     </main>
+
+    <section class="notify-section"></section>
+
+    <script src="../../js/notify.js"></script>
+    <script>
+        createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
+    </script>
 </body>
 </html>

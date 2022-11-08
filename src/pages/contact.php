@@ -19,16 +19,19 @@
     <title>Contato</title>
 </head>
 <body>
-    <header>
-        <h1 class="header-title"><a href="../../index.html" class="index-redirect">Event Presence</a></h1>
+    <?php
+        $indexLink = '../../index.php';
+        $eventFeedLink = './eventFeed.php';
+        $aboutLink = './about.php';
+        $contactLink = './contact.php';
+        $loginLink = './connect/login.php';
+        $profileLink = './user/profile.php';
+        $assetsRoute = '../../assets/uploads/';
 
-        <nav>
-            <a href="./eventFeed.php" class="header-links">Eventos</a>
-            <a href="./about.html" class="header-links">Sobre</a>
-            <a href="./contact.html" class="header-links">Contato</a>
-            <a href="./connect/login.php" id="connect-redirect">Já possui uma conta?</a>
-        </nav>
-    </header>
+        global $indexLink, $eventFeedLink, $aboutLink, $contactLink, $loginLink, $profileLink, $assetsRoute;
+
+        include('../php/header.php');
+    ?>
 
     <main>
         <section id="contact-page">

@@ -5,12 +5,13 @@
         header("Location: ../user/profile.php");
     }
 
-    include('../../php/connection.php');
+    include('../../php/connection.php'); 
 
 
     if (isset($_POST['login-email']) || isset($_POST['login-password'])) {
         if (strlen($_POST['login-email']) == 0 || strlen($_POST['login-password']) == 0) {
-            echo "Insira valores válidos";
+            $_SESSION['notify_type'] = "error";
+            $_SESSION['notify_message'] = "Insira valores válidos";
         } else {
             $email = $mysqli->real_escape_string($_POST['login-email']);
             $password = $mysqli->real_escape_string($_POST['login-password']);
@@ -65,16 +66,19 @@
     <title>Login</title>
 </head>
 <body>
-    <header>
-        <h1 class="header-title"><a href="../../../index.html" class="index-redirect">Event Presence</a></h1>
+    <?php
+        $indexLink = '../../../index.php';
+        $eventFeedLink = '../eventFeed.php';
+        $aboutLink = '../about.php';
+        $contactLink = '../contact.php';
+        $loginLink = '../connect/login.php';
+        $profileLink = '../user/profile.php';
+        $assetsRoute = '../../../assets/uploads/';
 
-        <nav>
-            <a href="../eventFeed.php" class="header-links">Eventos</a>
-            <a href="../about.html" class="header-links">Sobre</a>
-            <a href="../contact.html" class="header-links">Contato</a>
-            <a href="./register.php" id="connect-redirect">Não possui uma conta?</a>
-        </nav>
-    </header>
+        global $indexLink, $eventFeedLink, $aboutLink, $contactLink, $loginLink, $profileLink, $assetsRoute;
+
+        include('../../php/header.php');
+    ?>
 
     <main>
         <section class="connect-form-page">

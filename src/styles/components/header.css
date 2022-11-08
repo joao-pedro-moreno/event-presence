@@ -6,6 +6,12 @@ header {
     margin: auto;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .header-title {
     font-size: var(--title-size);
     font-weight: var(--title-weight);
@@ -39,6 +45,13 @@ header {
 #connect-redirect:hover {
     background-color: var(--main-color-hover);
     color: var(--body-background-color);
+}
+
+.header-profile-image {
+    width: 50px;
+    padding: 5px;
+    border-radius: 100%;
+    border: 1px solid var(--main-color);
 }
 
 
