@@ -12,7 +12,16 @@
         } else {
             $email = $mysqli->real_escape_string($_POST['recovery-email']);
 
-            
+            $sql_code = "SELECT 'email' FROM `users` WHERE `email` = '$email' LIMIT 1";
+            $sql_query = $mysqli->query($sql_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
+
+            if ($sql_query->num_rows > 0) {
+                $_SESSION['notify_type'] = "success";
+                $_SESSION['notify_message'] = "E-mail de recuperação enviado";
+            } else {
+                $_SESSION['notify_type'] = "error";
+                $_SESSION['notify_message'] = "Não foi encontrada nenhuma conta utilizando este e-mail";
+            }
         }
     }
 ?>
