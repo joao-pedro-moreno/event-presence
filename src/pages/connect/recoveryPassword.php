@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     if (isset($_SESSION['user'])) {
         header("Location: ../user/profile.php");
     }
@@ -16,8 +18,19 @@
             $sql_query = $mysqli->query($sql_code) or die("Falha ao executar o código SQL: " . $mysqli->error);
 
             if ($sql_query->num_rows > 0) {
-                $_SESSION['notify_type'] = "success";
-                $_SESSION['notify_message'] = "E-mail de recuperação enviado";
+                $token = md5(time());
+
+                if (mail($email, "Solicitação para alterar senha", "Link para alterar senha https://devs.nexusnx.com/moreno/event-presence/src/pages/connect/changePassword.php?token=$token")) {
+                    $recovery_token_sql_code = "INSERT INTO `recovery_password`(`email`, `token`) VALUES ('$email','$token')";
+                    $recovery_token_sql_query = $mysqli->query($recovery_token_sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+                
+                    $_SESSION['notify_type'] = "success";
+                    $_SESSION['notify_message'] = "E-mail de recuperação enviado";
+                } else {
+                    $_SESSION['notify_type'] = "error";
+                    $_SESSION['notify_message'] = "Erro ao enviar e-mail tente novamente mais tarde";
+                }
+
             } else {
                 $_SESSION['notify_type'] = "error";
                 $_SESSION['notify_message'] = "Não foi encontrada nenhuma conta utilizando este e-mail";
