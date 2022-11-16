@@ -2,7 +2,7 @@
     include('../../php/protect.php');
     include('../../php/connection.php');
 
-    if (isset($_FILES['edit-image']) || isset($_POST['edit-name']) || isset($_POST['edit-user'])) {
+    if (isset($_FILES['edit-image']) && isset($_POST['edit-name']) && isset($_POST['edit-user'])) {
         $file = $_FILES['edit-image'];
 
         if ($file['error']) {
@@ -113,6 +113,12 @@
             </form>
         </section>
     </main>
+
+    <section class="notify-section"></section>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="../../js/jquery.btechco.excelexport.js"></script>
+    <script src="../../js/jquery.base64.js"></script>
 
     <script src="../../js/notify.js"></script>
     <script>

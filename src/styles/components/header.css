@@ -49,9 +49,16 @@ nav {
 
 .header-profile-image {
     width: 50px;
-    padding: 5px;
+    padding: 3px;
     border-radius: 100%;
     border: 1px solid var(--main-color);
+    transition: all 0.3s ease;
+}
+
+.header-profile-image:hover {
+    border-radius: 10px;
+    padding: 1px;
+    background-color: var(--main-color);
 }
 
 

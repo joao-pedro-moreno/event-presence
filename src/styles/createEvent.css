@@ -39,6 +39,7 @@
     color: var(--paragraph-color);
     box-shadow: 0 10px 10px var(--shadow-color);
     font-size: 1.1rem;
+    resize: none;
 }
 
 .create-event-input:focus, .register-admin-input:focus, .edit-event-input:focus {

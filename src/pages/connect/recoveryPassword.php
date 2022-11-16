@@ -25,15 +25,15 @@
                     $recovery_token_sql_query = $mysqli->query($recovery_token_sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
                 
                     $_SESSION['notify_type'] = "success";
-                    $_SESSION['notify_message'] = "E-mail de recuperação enviado";
+                    $_SESSION['notify_message'] = "Caso o e-mail informado seja válido, você receberá um link de recuperação. Cheque sua caixa de entrada (e spam).";
                 } else {
-                    $_SESSION['notify_type'] = "error";
-                    $_SESSION['notify_message'] = "Erro ao enviar e-mail tente novamente mais tarde";
+                    $_SESSION['notify_type'] = "success";
+                    $_SESSION['notify_message'] = "Caso o e-mail informado seja válido, você receberá um link de recuperação. Cheque sua caixa de entrada (e spam).";
                 }
 
             } else {
-                $_SESSION['notify_type'] = "error";
-                $_SESSION['notify_message'] = "Não foi encontrada nenhuma conta utilizando este e-mail";
+                $_SESSION['notify_type'] = "success";
+                $_SESSION['notify_message'] = "Caso o e-mail informado seja válido, você receberá um link de recuperação. Cheque sua caixa de entrada (e spam).";
             }
         }
     }
@@ -93,6 +93,10 @@
     </main>
 
     <section class="notify-section"></section>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="../../js/jquery.btechco.excelexport.js"></script>
+    <script src="../../js/jquery.base64.js"></script>
 
     <script src="../../js/notify.js"></script>
     <script>

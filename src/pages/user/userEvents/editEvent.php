@@ -17,7 +17,7 @@
     
             $event_info = $sql_query->fetch_assoc();
     
-            if (isset($_POST['event-name']) || isset($_POST['event-desc']) || isset($_POST['event-ticket']) || isset($_POST['event-attraction']) || isset($_POST['event-address']) || isset($_POST['event-date']) || isset($_POST['event-hour-start']) || isset($_POST['event-hour-end']) || isset($_FILES['event-banner']) || isset($_POST['event-capacity']) || isset($_POST['event-age']) || isset($_POST['event-rules']) || isset($_POST['event-email']) || isset($_POST['event-tel'])) {
+            if (isset($_POST['event-name']) && isset($_POST['event-desc']) && isset($_POST['event-ticket']) && isset($_POST['event-attraction']) && isset($_POST['event-address']) && isset($_POST['event-date']) && isset($_POST['event-hour-start']) && isset($_POST['event-hour-end']) && isset($_FILES['event-banner']) && isset($_POST['event-capacity']) && isset($_POST['event-age']) && isset($_POST['event-rules']) && isset($_POST['event-email']) && isset($_POST['event-tel'])) {
                 if (strlen($_POST['event-name']) == 0 || strlen($_POST['event-desc']) == 0 || strlen($_POST['event-ticket']) == 0 || strlen($_POST['event-attraction']) == 0 || strlen($_POST['event-address']) == 0 || strlen($_POST['event-date']) == 0 || strlen($_POST['event-hour-start']) == 0 || strlen($_POST['event-hour-end']) == 0 || strlen($_POST['event-capacity']) == 0 || strlen($_POST['event-age']) == 0 || strlen($_POST['event-rules']) == 0 || strlen($_POST['event-email']) == 0 || strlen($_POST['event-tel']) == 0) {
                     $_SESSION['notify_type'] = "error";
                     $_SESSION['notify_message'] = "Insira valores válidos";
@@ -136,8 +136,8 @@
                     <input type="text" name="event-name" id="event-name" class="edit-event-input" value="<?php echo $event_info['name']; ?>" required>
                     <label for="event-desc">Descrição</label>
                     <textarea name="event-desc" id="event-desc" cols="30" rows="10" class="edit-event-input" required><?php echo $event_info['description']; ?></textarea>
-                    <label for="event-ticket">Nome do Evento</label>
-                    <input type="text" name="event-ticket" id="event-ticket" class="edit-event-input" value="<?php echo $event_info['ticket']; ?>" required>
+                    <label for="event-ticket">Valor do ingresso</label>
+                    <input type="number" name="event-ticket" id="event-ticket" class="edit-event-input" value="<?php echo $event_info['ticket']; ?>" required>
                     <label for="event-attractions">Atrações</label>
                     <input type="text" name="event-attraction" id="event-attractions" class="edit-event-input" placeholder="Separe cada atração com virgulas" value="<?php echo $event_info['attractions']; ?>" required>
                     <label for="event-address">Local</label>
@@ -150,7 +150,6 @@
                     <input type="text" name="event-hour-end" id="event-hour-end" class="edit-event-input" value="<?php echo $event_info['hour_end']; ?>" required>
                     <label for="event-banner">Banner</label>
                     <input type="file" name="event-banner" id="event-banner" class="edit-event-input" accept="image/x-png,image/gif,image/jpeg">
-            
                     <label for="event-capacity">Capacidade Máxima</label>
                     <input type="number" name="event-capacity" id="event-capacity" class="edit-event-input" min="0" value="<?php echo $event_info['capacity']; ?>" required>
                     <label for="event-age">Idade Mínima</label>
@@ -169,6 +168,10 @@
     </main>
     
     <section class="notify-section"></section>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="../../../js/jquery.btechco.excelexport.js"></script>
+    <script src="../../../js/jquery.base64.js"></script>
 
     <script src="../../../js/notify.js"></script>
     <script>

@@ -3,8 +3,6 @@
         session_start();
     }
 
-    // $user = $_SESSION['user'];
-
     if (isset($_SESSION['user'])) {
         $user = $_SESSION['user'];
     } else {
@@ -31,6 +29,5 @@
         <?php        
             }
         ?>
-        <!-- <a href="./login.php" id="connect-redirect">Já possui uma conta?</a> -->
     </nav>
 </header>

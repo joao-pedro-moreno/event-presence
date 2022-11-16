@@ -31,7 +31,6 @@
 
             foreach ($admins_list as $admin) {
 
-                // echo $admin;
                 // Pega as informações do perfil dos admins
                 $admin_email = $admin;
 
@@ -196,14 +195,14 @@
 
     <section class="notify-section"></section>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="../../../js/jquery.btechco.excelexport.js"></script>
+    <script src="../../../js/jquery.base64.js"></script>
+
     <script src="../../../js/notify.js"></script>
     <script>
         createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
     </script>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    <script src="../../../js/jquery.btechco.excelexport.js"></script>
-    <script src="../../../js/jquery.base64.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -218,9 +217,9 @@
             });
 
             $(".delete-event").click(function () {
-                $(".delete-modal").show();
+                $(".delete-modal").show(500);
                 $(".cancel").click(function () {
-                    $(".delete-modal").hide();
+                    $(".delete-modal").hide(500);
                 })
             })
         });

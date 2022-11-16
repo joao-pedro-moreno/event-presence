@@ -12,11 +12,12 @@
 
 .event-card {
     width: 400px;
+    height: 573px;
     background-color: var(--input-background-color);
     border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
     gap: 10px;
     padding: 20px;

@@ -2,7 +2,7 @@
     include('../../../php/connection.php');
     include('../../../php/protect.php');
 
-    if (isset($_POST['event-name']) || isset($_POST['event-desc']) || isset($_POST['event-ticket']) || isset($_POST['event-attraction']) || isset($_POST['event-address']) || isset($_POST['event-date']) || isset($_POST['event-hour-start']) || isset($_POST['event-hour-end']) || isset($_FILES['event-banner']) || isset($_POST['event-capacity']) || isset($_POST['event-age']) || isset($_POST['event-rules']) || isset($_POST['event-email']) || isset($_POST['event-tel'])) {
+    if (isset($_POST['event-name']) && isset($_POST['event-desc']) && isset($_POST['event-ticket']) && isset($_POST['event-attraction']) && isset($_POST['event-address']) && isset($_POST['event-date']) && isset($_POST['event-hour-start']) && isset($_POST['event-hour-end']) && isset($_FILES['event-banner']) && isset($_POST['event-capacity']) && isset($_POST['event-age']) && isset($_POST['event-rules']) && isset($_POST['event-email']) && isset($_POST['event-tel'])) {
         if (strlen($_POST['event-name']) == 0 || strlen($_POST['event-desc']) == 0 || strlen($_POST['event-ticket']) == 0 || strlen($_POST['event-attraction']) == 0 || strlen($_POST['event-address']) == 0 || strlen($_POST['event-date']) == 0 || strlen($_POST['event-hour-start']) == 0 || strlen($_POST['event-hour-end']) == 0 || strlen($_POST['event-capacity']) == 0 || strlen($_POST['event-age']) == 0 || strlen($_POST['event-rules']) == 0 || strlen($_POST['event-email']) == 0 || strlen($_POST['event-tel']) == 0) {
             $_SESSION['notify_type'] = "error";
             $_SESSION['notify_message'] = "Insira valores válidos";
@@ -104,7 +104,7 @@
                     <label for="event-desc">Descrição</label>
                     <textarea name="event-desc" id="event-desc" cols="30" rows="10" class="create-event-input" required></textarea>
                     <label for="event-ticket">Valor do ingresso</label>
-                    <input type="text" name="event-ticket" id="event-ticket" class="create-event-input" required>
+                    <input type="number" name="event-ticket" id="event-ticket" class="create-event-input" required>
                     <label for="event-attractions">Atrações</label>
                     <input type="text" name="event-attraction" id="event-attraction" class="create-event-input" placeholder="Separe cada atração com virgulas" required>
                     <label for="event-address">Local</label>
@@ -117,7 +117,6 @@
                     <input type="text" name="event-hour-end" id="event-hour-end" class="create-event-input" required>
                     <label for="event-banner">Banner</label>
                     <input type="file" name="event-banner" id="event-banner" class="create-event-input" accept="image/x-png,image/gif,image/jpeg" required>
-            
                     <label for="event-capacity">Capacidade Máxima</label>
                     <input type="number" name="event-capacity" id="event-capacity" class="create-event-input" min="0" required>
                     <label for="event-age">Idade Mínima</label>
@@ -136,6 +135,10 @@
     </main>
 
     <section class="notify-section"></section>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="../../../js/jquery.btechco.excelexport.js"></script>
+    <script src="../../../js/jquery.base64.js"></script>
 
     <script src="../../../js/notify.js"></script>
     <script>

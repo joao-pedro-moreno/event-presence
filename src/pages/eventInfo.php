@@ -8,6 +8,22 @@
         $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
 
         $event = $sql_query->fetch_assoc();
+
+        if (isset($_POST['report-event-email']) || isset($_POST['report-event-text'])) {
+            if (strlen($_POST['report-event-email']) == 0 || strlen($_POST['report-event-text']) == 0) {
+                $_SESSION['notify_type'] = "error";
+                $_SESSION['notify_message'] = "Favor inserir informações válidas";
+            } else {
+                $email = $mysqli->real_escape_string($_POST['report-event-email']);
+                $report = $mysqli->real_escape_string($_POST['report-event-text']);
+
+                $report_sql_code = "INSERT INTO `event_reports`(`event_id`, `email`, `report`) VALUES ('$event_id','$email','$report')";
+                $report_sql_query = $mysqli->query($report_sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
+
+                $_SESSION['notify_type'] = "success";
+                $_SESSION['notify_message'] = "Denúncia enviada com sucesso";
+            }
+        }
     } else {
         header("Location: eventFeed.php");
     }
@@ -24,6 +40,7 @@
     <link rel="stylesheet" href="../styles/config.css">
     <link rel="stylesheet" href="../styles/components/header.css">
     <link rel="stylesheet" href="../styles/eventInfo.css">
+    <link rel="stylesheet" href="../styles/notify.css">
 
     <!-- Importação Favicon -->
     <link rel="shortcut icon" href="../../assets/favicon.ico" type="image/x-icon">
@@ -109,9 +126,54 @@
                 
                     <h4 class="event-aside-title">Telefone de contato</h4>
                     <p class="event-aside-info event-aside-tel"><?php echo $event['contact_tel']; ?></p>
+                    <hr>
+
+                    <button class="report-event"><i class='bx bx-error'></i>Denunciar evento</button>
                 </aside>
             </div>
         </section>
     </main>
+
+    <section class="report-modal">
+        <form action="#" method="POST">
+            <fieldset class="modal-info">
+                <h3 class="modal-title"><i class='bx bx-error'></i>Reportar Evento</h3>
+
+                <label for="report-event-email">Seu email</label>
+                <input type="email" name="report-event-email" id="report-event-email" class="modal-input" require>
+
+                <label for="report-event-text">Denúncia</label>
+                <textarea name="report-event-text" id="report-event-text" cols="30" rows="10" class="modal-input" require></textarea>
+
+                <input type="submit" value="Denunciar evento" class="report-event-modal">
+
+                <button type="button" class="cancel">Cancelar</button>
+            </fieldset>
+        </form>
+    </section>
+
+    <section class="notify-section"></section>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="../js/jquery.btechco.excelexport.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../js/notify.js"></script>
+    <script>
+        createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".report-modal").hide();
+
+            $(".report-event").click(function () {
+                $(".report-modal").show(500);
+                $(".cancel").click(function () {
+                    $(".report-modal").hide(500);
+                })
+            })
+        })
+    </script>
 </body>
 </html>

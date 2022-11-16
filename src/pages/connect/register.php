@@ -1,7 +1,7 @@
 <?php 
     include('../../php/connection.php');
 
-    if (isset($_POST['register-user']) || isset($_POST['register-email']) || isset($_POST['register-password']) || isset($_POST['register-confirm-password'])) {
+    if (isset($_POST['register-user']) && isset($_POST['register-email']) && isset($_POST['register-password']) && isset($_POST['register-confirm-password'])) {
         if (strlen($_POST['register-user']) == 0 || strlen($_POST['register-email']) == 0 || strlen($_POST['register-password']) == 0 || strlen($_POST['register-confirm-password']) == 0) {
             $_SESSION['notify_type'] = "error";
             $_SESSION['notify_message'] = "Insira valores válidos";
@@ -116,6 +116,10 @@
     </main>
 
     <section class="notify-section"></section>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="../../js/jquery.btechco.excelexport.js"></script>
+    <script src="../../js/jquery.base64.js"></script>
 
     <script src="../../js/notify.js"></script>
     <script>

@@ -8,7 +8,7 @@
     include('../../php/connection.php'); 
 
 
-    if (isset($_POST['login-email']) || isset($_POST['login-password'])) {
+    if (isset($_POST['login-email']) && isset($_POST['login-password'])) {
         if (strlen($_POST['login-email']) == 0 || strlen($_POST['login-password']) == 0) {
             $_SESSION['notify_type'] = "error";
             $_SESSION['notify_message'] = "Insira valores válidos";
@@ -109,6 +109,10 @@
     </main>
 
     <section class="notify-section"></section>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="../../js/jquery.btechco.excelexport.js"></script>
+    <script src="../../js/jquery.base64.js"></script>
 
     <script src="../../js/notify.js"></script>
     <script>

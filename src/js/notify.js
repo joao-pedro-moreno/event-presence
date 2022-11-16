@@ -1,33 +1,19 @@
-const notifySection = document.querySelector(".notify-section")
+const notifySection = document.querySelector(".notify-section");
 
-function createNotify(type, message, time) {
+const createNotify = (type, message, time) => {
     const notify = `
         <section class="${type}-notify notify">
-            <i class='bx ${notifyIcon(type)}'></i>
+            <i class='bx ${type === 'error' ? 'bx-x-circle' : 'bx-check-circle'}'></i>
             <div class="notify-content">
                 <span class="notify-title">${type}</span>
                 <p class="notify-message">${message}</p>
             </div>
         </section>
-    `
+    `;
 
-    notifySection.innerHTML = notify
-    
-    if (time == "" || time == undefined || time == null) {
-        setTimeout(function (){
-            const notifyElement = document.querySelector(".notify").remove()
-        }, 7000)
-    } else {
-        setTimeout(function (){
-            const notifyElement = document.querySelector(".notify").remove()            
-        }, time * 1000)
-    }
-}
+    notifySection.innerHTML = notify;
 
-function notifyIcon(type) {
-    if (type == "error") {
-        return "bx-x-circle"
-    } else if (type == "success") {
-        return "bx-check-circle"
-    }
-}
+    setTimeout(() => {
+        document.querySelector(".notify").remove();
+    }, time * 1000 || 7000);
+};

@@ -14,7 +14,7 @@
 
         $sql_code = "SELECT * FROM `recovery_password` WHERE token = '$token'";
         $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
-
+        
         $recovery_information = $sql_query->fetch_assoc();
 
         if ($sql_query->num_rows > 0) {
@@ -111,6 +111,10 @@
     </main>
 
     <section class="notify-section"></section>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="../../js/jquery.btechco.excelexport.js"></script>
+    <script src="../../js/jquery.base64.js"></script>
 
     <script src="../../js/notify.js"></script>
     <script>
