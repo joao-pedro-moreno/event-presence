@@ -32,7 +32,7 @@
             $event_ticket = $mysqli->real_escape_string($_POST['event-ticket']);
             $event_attraction = $mysqli->real_escape_string($_POST['event-attraction']);
             $event_address = $mysqli->real_escape_string($_POST['event-address']);
-            $event_date = $mysqli->real_escape_string($_POST['event-date']);
+            $unformatted_event_date = $mysqli->real_escape_string($_POST['event-date']);
             $event_hour_start = $mysqli->real_escape_string($_POST['event-hour-start']);
             $event_hour_end = $mysqli->real_escape_string($_POST['event-hour-end']);
             $event_capacity = $mysqli->real_escape_string($_POST['event-capacity']);
@@ -40,6 +40,13 @@
             $event_rules = $mysqli->real_escape_string($_POST['event-rules']);
             $event_email = $mysqli->real_escape_string($_POST['event-email']);
             $event_tel = $mysqli->real_escape_string($_POST['event-tel']);
+
+            $formatedDate = explode('-',$unformatted_event_date); 
+            $year = $formatedDate[0];
+            $month = $formatedDate[1];
+            $day = $formatedDate[2];
+
+            $event_date = $day . '/' . $month . '/' . $year;
 
             $sql_code = "INSERT INTO `events`(`owner_email`, `name`, `description`, `ticket`, `attractions`, `address`, `date`, `hour_start`, `hour_end`,`capacity`, `age`, `rules`, `contact_email`, `contact_tel`, `banner`) VALUES ('$owner_email','$event_name','$event_desc', '$event_ticket','$event_attraction','$event_address','$event_date','$event_hour_start','$event_hour_end','$event_capacity','$event_age','$event_rules','$event_email','$event_tel', '$file_path')";
             $sql_query = $mysqli->query($sql_code) or die("Falha ao executar código SQL: " . $mysqli->error);
@@ -99,35 +106,51 @@
             <form action="#" method="POST" enctype="multipart/form-data">
                 <fieldset>
                     <legend>Criar um novo Evento</legend>
+                    
                     <label for="event-name">Nome do Evento</label>
                     <input type="text" name="event-name" id="event-name" class="create-event-input" required>
+
                     <label for="event-desc">Descrição</label>
                     <textarea name="event-desc" id="event-desc" cols="30" rows="10" class="create-event-input" required></textarea>
+
                     <label for="event-ticket">Valor do ingresso</label>
                     <input type="number" name="event-ticket" id="event-ticket" class="create-event-input" required>
+
                     <label for="event-attractions">Atrações</label>
                     <input type="text" name="event-attraction" id="event-attraction" class="create-event-input" placeholder="Separe cada atração com virgulas" required>
+
                     <label for="event-address">Local</label>
                     <input type="text" name="event-address" id="event-address" class="create-event-input" required>
+
                     <label for="event-date">Data</label>
                     <input type="date" name="event-date" id="event-date" class="create-event-input" required>
+
                     <label for="event-hour-start">Inicio</label>
                     <input type="text" name="event-hour-start" id="event-hour-start" class="create-event-input" required>
+
                     <label for="event-hour-end">Encerramento</label>
                     <input type="text" name="event-hour-end" id="event-hour-end" class="create-event-input" required>
+
                     <label for="event-banner">Banner</label>
                     <input type="file" name="event-banner" id="event-banner" class="create-event-input" accept="image/x-png,image/gif,image/jpeg" required>
+
                     <label for="event-capacity">Capacidade Máxima</label>
                     <input type="number" name="event-capacity" id="event-capacity" class="create-event-input" min="0" required>
+
                     <label for="event-age">Idade Mínima</label>
                     <input type="number" name="event-age" id="event-age" min="0" class="create-event-input" required>
+
                     <label for="event-rules">Regras</label>
                     <textarea name="event-rules" id="event-rules" cols="30" rows="10" class="create-event-input" required></textarea>
+
                     <label for="event-email">Email de contato</label>
                     <input type="email" name="event-email" id="event-email" class="create-event-input" required>
+
                     <label for="event-tel">Telefone de contato</label>
                     <input type="tel" name="event-tel" id="event-tel" class="create-event-input" required>
+
                     <input type="submit" value="Criar Evento">
+
                     <a href="../profile.php" class="cancel">Cancelar</a>
                 </fieldset>
             </form>
@@ -140,9 +163,18 @@
     <script src="../../../js/jquery.btechco.excelexport.js"></script>
     <script src="../../../js/jquery.base64.js"></script>
 
+    <script src="https://unpkg.com/imask"></script>
+
     <script src="../../../js/notify.js"></script>
-    <script>
-        createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
-    </script>
+    <script src="../../../js/createEventMask.js"></script>
+    <?php
+        if (isset($_SESSION['notify_type'])) {
+    ?>
+        <script>
+            createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
+        </script>
+    <?php
+        }
+    ?>
 </body>
 </html>

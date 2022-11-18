@@ -43,12 +43,12 @@
                 while($data = $sql_query->fetch_array()) {
             ?>
                 <article class="event-card">
-                    <img src="../../assets/uploads/<?php echo $data['banner'] ?>" alt="Banner do evento" class="card-image">
-                    <h3 class="card-name"><?php echo $data['name'] ?></h3>
-                    <p class="card-desc"><?php echo $data['description'] ?></p>
-                    <span class="card-date"><?php echo $data['date'] ?></span>
-                    <span class="card-hour"><?php echo $data['hour_start'] ?></span>
-                    <a href="./eventInfo.php?e=<?php echo $data['id'] ?>" class="card-button">Mais informações</a>
+                    <img src="../../assets/uploads/<?php echo $data['banner']; ?>" alt="Banner do evento" class="card-image">
+                    <h3 class="card-name"><?php echo $data['name']; ?></h3>
+                    <p class="card-desc"><?php echo $data['description']; ?></p>
+                    <span class="card-date" id="date-info"><?php echo $data['date']; ?></span>
+                    <span class="card-hour"><?php echo $data['hour_start']; ?></span>
+                    <a href="./eventInfo.php?e=<?php echo $data['id']; ?>" class="card-button">Mais informações</a>
                 </article>
             <?php
                 }

@@ -18,10 +18,12 @@
 }
 
 .event-aside-banner {
-    width: 100%;
-    max-width: 350px;
+    margin: auto;
+    height: 222px;
+    width: 350px;
     border-radius: var(--image-border-radius);
     box-shadow: 0 10px 10px var(--shadow-color);
+    object-fit: cover;
 }
 
 .page-form > fieldset {
@@ -101,5 +103,11 @@
 @media screen and (min-width:767px) and (max-width:1023px) {
     .event-aside-banner {
         max-width: none;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .event-aside-banner {
+        width: 100%;
     }
 }

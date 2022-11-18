@@ -2,6 +2,9 @@
     include('../../../php/connection.php');
     include('../../../php/protect.php');
 
+    $admins = array();
+    $handle_admins = array();
+
     if (isset($_GET['e'])) {
         $event_id = $_GET['e'];
 
@@ -25,20 +28,20 @@
             // Pega as informações dos admins do evento
             $sql_get_admin_code = "SELECT `email` FROM `admins` WHERE event_id = $event_id";
             $sql_get_admin_query = $mysqli->query($sql_get_admin_code) or die("Falha ao executar código SQL: " . $mysqli->error);
-            $admins_list = $sql_get_admin_query->fetch_array();
 
-            $admins = array();
+            while($admins_list = $sql_get_admin_query->fetch_array()){
+                $handle_admins[] = $admins_list;
+            };
 
-            foreach ($admins_list as $admin) {
-
+            foreach ($handle_admins as $admin) {
                 // Pega as informações do perfil dos admins
-                $admin_email = $admin;
+                $admin_email = $admin['email'];
 
                 $sql_admins_code = "SELECT `email`, `name`, `path` FROM `users` WHERE email = '$admin_email'";
                 $sql_admins_query = $mysqli->query($sql_admins_code) or die("Falha ao executar código SQL: " . $mysqli->error);
 
                 while ($get_admin = $sql_admins_query->fetch_assoc()) {
-                    array_push($admins, $get_admin);
+                    $admins[] = $get_admin;
                 };
             };
             
@@ -112,31 +115,31 @@
             <a href="../profile.php" class="back-button"><i class='bx bx-chevron-left'></i> Voltar</a>
             <div class="event-content">
                 <aside>
-                    <h2 class="event-name"><?php echo $event['name'] ?></h2>
-                    <img src="../../../../assets/uploads/<?php echo $event['banner'] ?>" alt="Banner do evento" class="event-aside-banner">
+                    <h2 class="event-name"><?php echo $event['name']; ?></h2>
+                    <img src="../../../../assets/uploads/<?php echo $event['banner']; ?>" alt="Banner do evento" class="event-aside-banner">
                     <h3 class="event-aside-title">Valor do ingresso</h3>
-                    <p class="event-aside-info event-aside-ticket"><?php echo $event['ticket'] ?></p>
+                    <p class="event-aside-info event-aside-ticket"><?php echo $event['ticket']; ?></p>
                     <hr>
                     <h3 class="event-aside-title">Local</h3>
-                    <p class="event-aside-info event-aside-address"><?php echo $event['address'] ?></p>
+                    <p class="event-aside-info event-aside-address"><?php echo $event['address']; ?></p>
                     <hr>
                     <h3 class="event-aside-title">Data</h3>
-                    <p class="event-aside-info event-aside-date"><?php echo $event['date'] ?></p>
+                    <p class="event-aside-info event-aside-date" id="date-info"><?php echo $event['date']; ?></p>
                     <hr>
                     <h3 class="event-aside-title">Horário</h3>
-                    <p class="event-aside-info event-aside-hour"><?php echo $event['hour_start'] ?></p>
+                    <p class="event-aside-info event-aside-hour"><?php echo $event['hour_start']; ?></p>
                     <hr>
                     <h3 class="event-aside-title">Idade mínima</h3>
-                    <p class="event-aside-info event-aside-age"><?php echo $event['age'] ?></p>
+                    <p class="event-aside-info event-aside-age"><?php echo $event['age']; ?></p>
                     <hr>
                     <h3 class="event-aside-title">Capacidade máxima</h3>
-                    <p class="event-aside-info event-aside-capacity"><?php echo $event['capacity'] ?></p>
+                    <p class="event-aside-info event-aside-capacity"><?php echo $event['capacity']; ?></p>
                     <hr>
                     <h3 class="event-aside-title">Email de contato</h3>
-                    <p class="event-aside-info event-aside-email"><?php echo $event['contact_email'] ?></p>
+                    <p class="event-aside-info event-aside-email"><?php echo $event['contact_email']; ?></p>
                     <hr>
                     <h3 class="event-aside-title">Telefone de contato</h3>
-                    <p class="event-aside-info event-aside-tel"><?php echo $event['contact_tel'] ?></p>
+                    <p class="event-aside-info event-aside-tel"><?php echo $event['contact_tel']; ?></p>
                     <hr>
                     <a href="./registerEventAdmin.php?e=<?php echo $event_id; ?>" class="redirect-button">Adicionar administradores</a>
                     <a href="./editEvent.php?e=<?php echo $event_id; ?>" class="redirect-button">Editar evento</a>
@@ -200,9 +203,15 @@
     <script src="../../../js/jquery.base64.js"></script>
 
     <script src="../../../js/notify.js"></script>
-    <script>
-        createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
-    </script>
+    <?php
+        if (isset($_SESSION['notify_type'])) {
+    ?>
+        <script>
+            createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
+        </script>
+    <?php
+        }
+    ?>
 
     <script>
         $(document).ready(function () {

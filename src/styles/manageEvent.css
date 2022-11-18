@@ -32,7 +32,7 @@
 }
 
 #manage-event-page .event-content > aside {
-    min-width: fit-content;
+    width: fit-content;
     background-color: var(--input-background-color);
     border-radius: var(--border-radius);
     padding: 20px;
@@ -50,10 +50,11 @@
 }
 
 .event-aside-banner {
-    width: 100%;
-    max-width: 350px;
+    width: 350px;
+    height: 222px;
     border-radius: var(--image-border-radius);
     box-shadow: 0 10px 10px var(--shadow-color);
+    object-fit: cover;
 }
 
 #manage-event-page .event-content > aside > hr {
@@ -269,6 +270,10 @@ input[type="submit"]:hover {
 }
 
 @media screen and (max-width:1024px) {
+    .event-aside-banner {
+        width: 100%;
+    }
+
     .table {
         width: 100%;
         display: flex;

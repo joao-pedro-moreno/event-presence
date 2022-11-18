@@ -87,6 +87,13 @@
     color: var(--paragraph-color);
 }
 
+.profile-events {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .section-title {
     color: var(--main-color);
     font-size: 1.7rem;
@@ -152,7 +159,9 @@
 .event-banner {
     width: 100%;
     max-width: 500px;
+    height: 222px;
     border-radius: var(--image-border-radius);
+    object-fit: cover;
 }
 
 .event-name {
@@ -190,7 +199,7 @@
     }
 
     .event-card, .event-create {
-        width: 90%;
+        width: 100%;
     }
 
     .event-banner {

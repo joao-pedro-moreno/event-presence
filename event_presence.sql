@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 16-Nov-2022 às 16:41
+-- Tempo de geração: 17-Nov-2022 às 18:28
 -- Versão do servidor: 10.5.12-MariaDB-cll-lve
 -- versão do PHP: 7.2.34
 
@@ -62,7 +62,7 @@ CREATE TABLE `events` (
   `ticket` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `attractions` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(140) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` date NOT NULL,
+  `date` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `hour_start` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `hour_end` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   `banner` varchar(120) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -71,6 +71,19 @@ CREATE TABLE `events` (
   `rules` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `contact_email` varchar(140) COLLATE utf8mb4_unicode_ci NOT NULL,
   `contact_tel` varchar(140) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `event_reports`
+--
+
+CREATE TABLE `event_reports` (
+  `id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `email` varchar(140) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `report` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -124,6 +137,12 @@ ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `event_reports`
+--
+ALTER TABLE `event_reports`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `recovery_password`
 --
 ALTER TABLE `recovery_password`
@@ -155,6 +174,12 @@ ALTER TABLE `confirmed`
 -- AUTO_INCREMENT de tabela `events`
 --
 ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `event_reports`
+--
+ALTER TABLE `event_reports`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

@@ -109,7 +109,7 @@
                     <hr>
                 
                     <h4 class="event-aside-title">Data</h4>
-                    <p class="event-aside-info event-aside-date"><?php echo $event['date']; ?></p>
+                    <p class="event-aside-info event-aside-date" id="date-info"><?php echo $event['date']; ?></p>
                     <hr>
                 
                     <h4 class="event-aside-title">Horário</h4>
@@ -159,9 +159,15 @@
     <script src="../js/jquery.btechco.excelexport.js"></script>
     <script src="../js/jquery.base64.js"></script>
     <script src="../js/notify.js"></script>
-    <script>
-        createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
-    </script>
+    <?php
+        if (isset($_SESSION['notify_type'])) {
+    ?>
+        <script>
+            createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
+        </script>
+    <?php
+        }
+    ?>
 
     <script>
         $(document).ready(function () {

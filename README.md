@@ -13,6 +13,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Javascript e jQuery
 - PHP
 - MySQL
+- [IMask](https://imask.js.org)
 
 ## Instalação Local
 

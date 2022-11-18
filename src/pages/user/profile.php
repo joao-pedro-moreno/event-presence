@@ -60,23 +60,19 @@
                 </div>
             </aside>
             
-            <section>
+            <section id="user-events">
                 <h2 class="section-title">Seus eventos</h2>
-
                 <div class="user-events">
                     <a href="./userEvents/createEvent.php" class="event-create">
                         <i class='bx bx-plus'></i>
                         <span class="create-event-span">Criar um novo Evento</span>
                     </a>
-
                     <?php
                         while($data = $sql_query->fetch_array()) {
                     ?>
                             <article class="event-card">
                                 <img src="../../../assets/uploads/<?php echo $data['banner']; ?>" alt="Banner do evento" class="event-banner">
-        
                                 <h3 class="event-name"><?php echo $data['name']; ?></h3>
-        
                                 <a href="./userEvents/manageEvent.php?e=<?php echo $data['id']; ?>" class="manage-event-button">Gerenciar evento</a>
                             </article>
                     <?php

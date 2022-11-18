@@ -86,7 +86,7 @@
 }
 
 #event-info-page-aside {
-    min-width: fit-content;
+    /* min-width: fit-content; */
     height: fit-content;
     background-color: var(--input-background-color);
     border-radius: var(--border-radius);
@@ -186,6 +186,7 @@ label {
     padding: 16px;
     color: var(--paragraph-color);
     box-shadow: 0 10px 10px var(--shadow-color);
+    resize: none;
 }
 .modal-input:focus {
     border: 1px solid var(--main-color);

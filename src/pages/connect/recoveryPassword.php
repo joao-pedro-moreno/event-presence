@@ -99,8 +99,14 @@
     <script src="../../js/jquery.base64.js"></script>
 
     <script src="../../js/notify.js"></script>
-    <script>
-        createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
-    </script>
+    <?php
+        if (isset($_SESSION['notify_type'])) {
+    ?>
+        <script>
+            createNotify("<?php echo $_SESSION['notify_type']; unset($_SESSION['notify_type']); ?>", "<?php echo $_SESSION['notify_message']; unset($_SESSION['notify_message']); ?>", 5)
+        </script>
+    <?php
+        }
+    ?>
 </body>
 </html>
